@@ -1,0 +1,3 @@
+- gestion des pivots
+
+- moteur de recherche

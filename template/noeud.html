@@ -1,0 +1,39 @@
+<BOUCLE_noeud(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
+    [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+    <div class="noeud">
+        <div class="center">
+            <h2>[<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/dc:title/0/text})]" />] #VALEUR{children/dc:title/0/text}</h2>
+        </div>
+        <div class="list">
+            <BOUCLE_soustheme(DATA){source tableau, #VALEUR{children/soustheme}}>
+                [<h3>(#VALEUR{children/titre/0/text})</h3>]
+                <B_dossier>
+                <ul>
+                <BOUCLE_dossier(DATA){source tableau, #VALEUR{children/dossier}}>
+                    <li>
+                        [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a>]
+                    </li>
+                </BOUCLE_dossier>
+                </ul>
+                </B_dossier>
+            </BOUCLE_soustheme>
+
+            [(#REM) sous dossier]
+            <BOUCLE_sousdossier(DATA){source tableau, #VALEUR{children/sousdossier}}>
+                [<h3>(#VALEUR{children/titre/0/text})</h3>]
+                <B_fiche>
+                <ul>
+                <BOUCLE_fiche(DATA){source tableau, #VALEUR{children/fiche}}>
+                    <li>
+                        [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a>]
+                    </li>
+                </BOUCLE_fiche>
+                </ul>
+                </B_dossier>
+            </BOUCLE_sousdossier>
+        </div>
+        [(#INCLURE{fond=template/inclure/inc_servicesenligne, env}{table=#VALEUR{children/serviceenligne}})]
+        [(#INCLURE{fond=template/inclure/inc_questionreponses, env}{table=#VALEUR{children/questionreponse}})]
+        [(#INCLURE{fond=template/inclure/inc_pourensavoirplus, env}{table=#VALEUR{children/pourensavoirplus}})]
+    </div>
+</BOUCLE_noeud>

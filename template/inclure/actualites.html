@@ -1,0 +1,36 @@
+#CACHE{3*24*3600}
+<BOUCLE_actualites(DATA){source simplexml, #ENV{url}actualites/index.xml, namespace}>
+    <div class="actualites">
+        <div class="center">
+            <h2><:comarquage:actualites:></h2>
+        </div>
+        <B_item_content>
+        <div class="content noeudThemes">
+            <BOUCLE_item_content(DATA){source tableau, #VALEUR{children/refactualite}}{0,10}>
+                <div>
+                    [<small>(#VALEUR{children/surtitre/0/text})</small>]
+                    [<h3><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/lienpublication}})]">(#VALEUR{children/titre/0/text})</a></h3>]
+                    [<small>(#VALEUR{children/date/0/text})</small>]
+                    </br>
+
+                    <BOUCLE_imageillustration(DATA){source tableau, #VALEUR{children/imageillustration}}{0,1}>
+                    [(#VALEUR{attributes/type}|=={Image}|oui)
+                    [<img src="https://www.service-public.fr/webapp/images/actu/large/(#VALEUR{attributes/lienpublication})" alt="[(#VALEUR{children/credits/0/children/paragraphe/0/text})]" title="[(#VALEUR{children/credits/0/children/paragraphe/0/text})]" />]]
+                    </BOUCLE_imageillustration>
+
+                    [<p>
+                        (#VALEUR{children/introduction/0/children/texte/0/children/paragraphe/0/text})
+                    </p>]
+
+                    <div class="media">
+                        <BOUCLE_imageillustration2(DATA){source tableau, #VALEUR{children/imageillustration}}{1,n}>
+                            [(#VALEUR{attributes/type}|=={Image}|oui)
+                            [<img src="https://www.service-public.fr/webapp/images/actu/large/(#VALEUR{attributes/lienpublication})" alt="[(#VALEUR{children/credits/0/children/paragraphe/0/text})]" title="[(#VALEUR{children/credits/0/children/paragraphe/0/text})]" />]]
+                        </BOUCLE_imageillustration2>
+                    </div>
+                </div>
+            </BOUCLE_item_content>
+        </div>
+        </B_item_content>
+    </div>
+</BOUCLE_actualites>

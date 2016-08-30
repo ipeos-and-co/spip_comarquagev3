@@ -1,0 +1,12 @@
+<B_servicesenligne>
+<div class="servicesenligne">
+    <h3><:comarquage:services_en_ligne:></h3>
+    <ul>
+    <BOUCLE_servicesenligne(DATA){source tableau, #ENV{table}}>
+        <li>
+            [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{children/titre/0/text}</a></br> <small>#VALEUR{attributes/type}</small>]
+        </li>
+    </BOUCLE_servicesenligne>
+    </ul>
+</div>
+</B_servicesenligne>

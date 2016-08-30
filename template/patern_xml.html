@@ -1,0 +1,16 @@
+#CACHE{3*24*3600}
+[(#SET{categorie,[(#ENV{parametres}|table_valeur{categorie}|type_categorie)]})]
+[(#SET{inc_xml,[(#ENV{parametres}|table_valeur{xml}|type_entrer)]})]
+[(#SET{xml,[(#ENV{parametres}|table_valeur{xml})]})]
+[(#SET{url,[(#GET{categorie}|table_valeur{XMLURL})]})]
+
+[(#GET{inc_xml}|=={accueil}|oui)
+    [(#INCLURE{fond=template/accueil, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+
+[(#GET{inc_xml}|=={noeud}|oui)
+    [(#INCLURE{fond=template/noeud, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+[(#GET{inc_xml}|=={fiche}|oui)
+    [(#INCLURE{fond=template/fiche, env}{xml=#GET{xml}}{url=#GET{url}})]
+]

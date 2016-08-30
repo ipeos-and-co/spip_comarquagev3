@@ -1,0 +1,24 @@
+#CACHE{3*24*3600}
+<BOUCLE_data_menu(DATA){source simplexml, #ENV{url}menu.xml}>
+    <div class="spMenu">
+        <div class="center">
+            <h2>Guide des droits et démarches des [(#VALEUR{children/audience/0/text})]</h2>
+        </div>
+        <div class="spMenu noeudThemes">
+            <BOUCLE_item(DATA){source tableau, #VALEUR{children/item}}>
+            <div class="{$classTheme}">
+                [<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/titre/0/text})]" />]
+                <h3>[<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a>]</h3>
+                <ul class="spPublicationNoeud">
+                    <BOUCLE_sousdossier(DATA){source tableau, #VALEUR{children/item}}{0,5}>
+                        [<li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a></li>]
+                    </BOUCLE_sousdossier>
+                    [<li>
+                        <a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">...</a>
+                    </li>]
+                </ul>
+            </div>
+            </BOUCLE_item>
+        </div>
+    </div>
+</BOUCLE_data_menu>

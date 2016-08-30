@@ -1,0 +1,12 @@
+<B_questionreponses>
+<div class="questionreponses">
+    <h3><:comarquage:questionreponses:></h3>
+    <ul>
+    <BOUCLE_questionreponses(DATA){source tableau, #ENV{table}}>
+        <li>
+            [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a>]
+        </li>
+    </BOUCLE_questionreponses>
+    </ul>
+</div>
+</B_questionreponses>

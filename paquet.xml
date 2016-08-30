@@ -1,0 +1,17 @@
+<paquet
+    prefix="comarquage_v3"
+    categorie="divers"
+    version="0.0.2"
+    etat="test"
+    compatibilite="[3.0.0;3.1.*]"
+    logo="prive/themes/spip/images/picto-comarquage-service-public-50.png"
+>
+    <nom>Comarquage Flux v3</nom>
+    <auteur>IPEOS I-Solutions</auteur>
+    <auteur>Mickaël Hippocrate</auteur>
+    <credit lien="http://www.ipeos.com">IPEOS I-Solutions</credit>
+    <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+
+    <pipeline nom="insert_head_css" inclure="comarquage_v3_pipeline.php"/>
+
+</paquet>
