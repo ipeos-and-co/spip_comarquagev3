@@ -6,21 +6,18 @@
         <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate)] [ (#VALEUR{children/dc:contributor/0/text})]</small></br></br>
     </div>
     <div class="content">
-      [(#REM)][(#VAL{}|getxpathxml|foreach)]
-      [(#SET{array_xpath, #VAL{}|getxpathxml})]
-      [(#REM)[(#VAL{}|cut_xpath)]]
-      <BOUCLE_element_interne(DATA){source tableau, #GET{array_xpath}}>
+
+      <BOUCLE_element_interne(DATA){source tableau, #VALEUR}>
+        [(#VALEUR|print)]
 
         [(#REM) Paragraphe ]
-        [(#VALEUR|pattern_xpath|=={paragraphe}|oui)
-          [<p class="paragraphe">(#INCLURE{fond=template/inclure/inc_paragraphe, env}{table=#_fiche:VALEUR{#VALEUR}})</p>]
+        [(#VALEUR{0/name}|=={paragraphe}|oui)
+          [<p class="paragraphe">(#INCLURE{fond=template/inclure/inc_paragraphe, env}{table=#VALEUR{0/children}})</p>]
         ]
 
-
-
         [(#REM) Chapitre ]
-        [(#VALEUR|pattern_xpath|=={chapitre}|oui)
-          [(#INCLURE{fond=template/inclure/inc_chapitre, env}{table=})]
+        [(#VALEUR{0/name}|=={chapitre}|oui)
+          [(#INCLURE{fond=template/inclure/inc_chapitre, env}{table=#VALEUR})]
         ]
 
       </BOUCLE_element_interne>

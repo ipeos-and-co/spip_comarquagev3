@@ -293,16 +293,22 @@ function noeud_structure_xml($d){
     }
 }
 
+global $parser_xpath_old;
+$parser_xpath_old = "null";
 
 function trace_xml($child, $parser_xpath = ""){
-    global $parent_node;
+    global $parent_node, $parser_xpath_old;
     for($i=0; $i < $child->childNodes->length;$i++){
       if($child->childNodes->item($i)->hasChildNodes()){
-        $parser_xpath = $child->childNodes->item($i)->getNodePath();
-        trace_xml($child->childNodes->item($i), $parser_xpath, $parent);
+        $parser_xpath = $child->getNodePath();
+        trace_xml($child->childNodes->item($i), $parser_xpath);
       }
     }
-    $parent_node[] = $parser_xpath;
+
+    if(!strpos($parser_xpath, $parser_xpath_old)){
+      $parser_xpath_old = $parser_xpath;
+      $parent_node[] = $parser_xpath;
+    }
 }
 
 //conversion du xpath DomDocument en xpath SimpleXML
@@ -346,24 +352,56 @@ function getxpathxml(){
 
 function cut_xpath(){
   global $parent_node;
-  // $groupes = [];
-  // $tempon = "";
-  foreach ($parent_node as $key => $value) {
-    $interieure = preg_split('/(children\/[a-zA-Z]+\/?[\d]?)+/', $parent_node[$key], NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-
-    // $parent_node[$key]=
-    // var_dump($interieure);
+  getxpathxml();
+  foreach ($parent_node as $key => $value){
+    $tab_current = current($parent_node);
+    $tab_next = next($parent_node);
+    if(strlen($tab_next)<=strlen($tab_current)){
+      $res = strpos($tab_current,$tab_next);
+      if($res !== false){
+        unset($parent_node[$key]);
+      }
+    }
   }
   return $parent_node;
 }
 
-function pattern_xpath($str_xpath){
-  $var_model = "false";
-  if(preg_match("/(texte).*(chapitre).*(liste).*(item)/", $str_xpath)){
-    $var_model = "liste";
-  }elseif(preg_match("/(texte).*(paragraphe).*(texteinterne)/", $str_xpath)){
-    $var_model = "paragraphe";
+function profondeur($str){
+  $chemin ="";
+  $liste_noeud = array(
+    "paragraphe",
+    "chapitre",
+    "ousadresser",
+    "reference",
+    "serviceenligne",
+    "pourensavoirplus",
+    "abreviation",
+  );
+  $capture = preg_split("/(children\/[a-zA-Z]+\/?[\d]?)+/", $str, NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+
+  for($k=0;$k<sizeof($capture);$k++){
+    if($capture[$k]<>"/"){
+      $val = explode('/',$capture[$k]);
+      // $tableau .= $capture[$k];
+      for($i=0;$i<sizeof($val);$i++){
+        if(in_array($val[$i],$liste_noeud, TRUE)){
+          $cap = $capture[$k];
+          $i = sizeof($val);
+        }
+      }
+
+      $pos = strpos($cap,$capture[$k]);
+
+      if($pos !== false){
+        $chemin .= $capture[$k];
+        $k = sizeof($capture);
+      }else{
+        $chemin .= $capture[$k];
+        $chemin .= "/";
+      }
+    }
   }
-  return $var_model;
+  return $chemin;
 }
+
 ?>
