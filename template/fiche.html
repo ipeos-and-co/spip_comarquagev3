@@ -1,82 +1,26 @@
-<BOUCLE_fiche(DATA){source domdocument, #ENV{url}#ENV{xml}.xml, namespace}>
+[(#SET{attribut, #ARRAY})]
+<div class="fiche">
+<BOUCLE_simplexml(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
   [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
-  <div class="fiche">
-    <div class="center">
-        <h2>#VALEUR{children/dc:title/0/text}</h2>
-        <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate)] [ (#VALEUR{children/dc:contributor/0/text})]</small></br></br>
-    </div>
-    <div class="content">
-
-      <BOUCLE_element_interne(DATA){source tableau, #VALEUR}>
-        [(#VALEUR|print)]
-
-        [(#REM) Paragraphe ]
-        [(#VALEUR{0/name}|=={paragraphe}|oui)
-          [<p class="paragraphe">(#INCLURE{fond=template/inclure/inc_paragraphe, env}{table=#VALEUR{0/children}})</p>]
-        ]
-
-        [(#REM) Chapitre ]
-        [(#VALEUR{0/name}|=={chapitre}|oui)
-          [(#INCLURE{fond=template/inclure/inc_chapitre, env}{table=#VALEUR})]
-        ]
-
-      </BOUCLE_element_interne>
-
-      <p>
-          [(#VALEUR{children/texte/0/children/paragraphe/0/children/lieninterne/0/text})]
-      </p>
-      <BOUCLE_texte(DATA){source tableau, #VALEUR{children/texte}}>
-          <BOUCLE_chapitre(DATA){source tableau, #VALEUR{children/chapitre}}>
-              <h3>#VALEUR{children/titre/0/children/paragraphe/0/children/lieninterne/0/text}</h3>
-              <BOUCLE_paragraphe(DATA){source tableau, #VALEUR{children/paragraphe}}>
-                  [(#SET{cpt_paragraphe,[(#COMPTEUR_BOUCLE|moins{1})]})]
-                  <B_lieninterne>
-                      <p>
-                      <BOUCLE_lieninterne(DATA){source tableau, #VALEUR{children/lieninterne}}>
-                          [(#SET{cpt_lieninterne,[(#COMPTEUR_BOUCLE|moins{1})]})]
-                          [(#VALEUR{attributes/lienpublication}|non)[(#VALEUR{text})]]
-                          [(#VALEUR{attributes/lienpublication}|oui)
-                              [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/lienpublication}})">[(#VALEUR{text})]</a>]
-                          ]
-                          <BOUCLE_expression(DATA){source tableau, #_paragraphe:VALEUR{children/expression}}{#GET{cpt_lieninterne},1}>
-                              [<i>(#VALEUR{text})</i>]
-                          </BOUCLE_expression>
-                              <BOUCLE_citation(DATA){source tableau, #_paragraphe:VALEUR{children/citation}}{#GET{cpt_lieninterne},1}>
-                              </BOUCLE_citation>
-                          <//B_expression>
-                      </BOUCLE_lieninterne>
-
-                      </p>
-                  </B_lieninterne>
-                  <B_serviceEnLigne>
-                      <div class="serviceenligne">
-                      <BOUCLE_serviceEnLigne(DATA){source tableau, #_chapitre:VALEUR{children/serviceenligne}}{#GET{cpt_paragraphe},1}>
-                          <h4><:comarquage:service_en_ligne:></h4>
-                          <p><strong>[(#VALEUR{children/titre/0/text})]</strong></p>
-                          <p class="text-center">
-                              [<a href="(#VALEUR{attributes/url})" class="btn btn-primary"><:comarquage:acceder_service_ligne:></a>]</br>
-                              [(#VALEUR{children/source/0/text})]
-                          </p>
-                      </BOUCLE_serviceEnLigne>
-                      </div>
-                  </B_serviceEnLigne>
-              </BOUCLE_paragraphe>
-              <B_liste>
-              <ul>
-              <BOUCLE_liste(DATA){source tableau, #VALEUR{children/liste}}>
-                  <BOUCLE_item(DATA){source tableau, #VALEUR{children/item}}>
-                      <li>
-                          #VALEUR{children/paragraphe/0/text}
-                          <BOUCLE_lieninterne1(DATA){source tableau, #VALEUR{children/lieninterne}}>
-                              [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/lienpublication}})">[(#VALEUR{text})]</a>]
-                          </BOUCLE_lieninterne1>
-                      </li>
-                  </BOUCLE_item>
-              </BOUCLE_liste>
-              </ul>
-              </B_liste>
-          </BOUCLE_chapitre>
-      </BOUCLE_texte>
-    </div>
-  </div>
+  [<h2>(#VALEUR{children/dc:title/0/text})</h2>]
+  <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate) - ][(#VALEUR{children/dc:contributor/0/text})]</small>
+</BOUCLE_simplexml>
+<BOUCLE_fiche(DATA){source domdocument, #ENV{url}#ENV{xml}.xml, namespace}>
+  <BOUCLE_element_interne(DATA){source tableau, #VALEUR{children}}>
+    <BOUCLE_element(DATA){source tableau, #VALEUR}>
+      [(#SET{file,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
+      [(#SET{attribut,#GET{attribut}|push{#GET{file}}})]
+      [(#SET{file,[inc_(#GET{file})]})]
+      [(#REM) #GET{file} ]
+      [(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url}|oui)
+        [(#SET{att_url,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url})]})]
+      ]
+      [(#CHEMIN{template/inclure/#GET{file}.html}|oui)
+        <INCLURE{fond=template/inclure/#GET{file},env}{table=#VALEUR}{attribut=#GET{attribut}}{att_url=#GET{att_url}} />
+      ]
+      <BOUCLE_recursive(BOUCLE_element_interne)></BOUCLE_recursive>
+      [(#SET{attribut, #ARRAY})]
+    </BOUCLE_element>
+  </BOUCLE_element_interne>
 </BOUCLE_fiche>
+</div>

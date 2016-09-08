@@ -1,0 +1,6 @@
+[(#VAL{titre}|in_array{#ENV{attribut}}|oui)
+  [<h3 class="[(#ENV{table}|table_valeur{name})]">(#ENV{table}|table_valeur{text})</h3>]
+]
+[(#VAL{titre}|in_array{#ENV{attribut}}|non)
+  [<span class="[(#ENV{table}|table_valeur{name})]">(#ENV{table}|table_valeur{text})</span>]
+]

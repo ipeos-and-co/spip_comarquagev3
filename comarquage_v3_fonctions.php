@@ -234,7 +234,7 @@ function inc_domdocument_to_array($u, $utiliser_namespace = false) {
         }
     }
 
-    noeud_structure_xml($d);
+    // noeud_structure_xml($d);
     // schema de parcours
     // structure();
     $u = $d->saveXML();
@@ -242,166 +242,84 @@ function inc_domdocument_to_array($u, $utiliser_namespace = false) {
     if (is_string($u)) {
 		$u = simplexml_load_string($u);
 	}
-    include_spip('inc/simplexml_to_array');
-	return array('root' => @xmlObjToArr($u, $utiliser_namespace));
+	return array('root' => @fluxXmlObjToArr($u, $utiliser_namespace));
 }
 
+/**
+ * Transforme un objet SimpleXML en flux de tableau PHP
+ * http://www.php.net/manual/pt_BR/book.simplexml.php#108688
+ * xaviered at gmail dot com 17-May-2012 07:00
+ *
+ * @param object $obj
+ * @param bool $utiliser_namespace
+ * @return array
+ **/
+function fluxXmlObjToArr($obj, $utiliser_namespace = false) {
+	$tableau = array();
+	// Cette fonction getDocNamespaces() est longue sur de gros xml. On permet donc
+	// de l'activer ou pas suivant le contenu supposé du XML
+	if (is_object($obj)) {
+		if (is_array($utiliser_namespace)) {
+			$namespace = $utiliser_namespace;
+		} else {
+			if ($utiliser_namespace) {
+				$namespace = $obj->getDocNamespaces(true);
+			}
+			$namespace[null] = null;
+		}
 
-global $parent_node;
-$parent_node = array();
+		$name = strtolower((string)$obj->getName());
+		$text = trim((string)$obj);
+		if (strlen($text) <= 0) {
+			$text = null;
+		}
 
-function noeud_structure_xml($d){
-  global $parent_node;
-    $node_list = array(
-        'SurTitre',
-        'Audience',
-        'Canal',
-        'Cible',
-        // 'Theme',
-        'SousThemePere',
-        // 'DossierPere',
-        'SousDossierPere',
-        'SousTheme',
-        'Dossier',
-        'SousDossier',
-        'Fiche',
-        'Avertissement',
-        'Introduction',
-        'Groupe',
-        'Texte',
-        'ListeSituations',
-        'LienExterneCommente',
-        'VoirAussi',
-        'OuSAdresser',
-        'Reference',
-        'Partenaire',
-        'Actualite',
-        'ServiceEnLigne',
-        'PourEnSavoirPlus',
-        'SiteInternetPublic',
-        'Definition',
-        'Abreviation',
-        'QuestionReponse',
-        'CommentFaireSi',
-        'InformationComplementaire'
-    );
+		$children = array();
+		$attributes = array();
 
-    foreach($d->documentElement->childNodes as $value){
-        if (in_array($value->tagName, $node_list)){
-            trace_xml($value);
-        }
-    }
-}
+		// get info for all namespaces
+		foreach ($namespace as $ns => $nsUrl) {
+			// attributes
+			$objAttributes = $obj->attributes($ns, true);
+			foreach ($objAttributes as $attributeName => $attributeValue) {
+				$attribName = strtolower(trim((string)$attributeName));
+				$attribVal = trim((string)$attributeValue);
+				if (!empty($ns)) {
+					$attribName = $ns . ':' . $attribName;
+				}
+				$attributes[$attribName] = $attribVal;
+			}
 
-global $parser_xpath_old;
-$parser_xpath_old = "null";
+			// children
+			$objChildren = $obj->children($ns, true);
+      $cpt = -1;
+			foreach ($objChildren as $childName => $child) {
+				$childName = strtolower((string)$childName);
+				if (!empty($ns)) {
+					$childName = $ns . ':' . $childName;
+				}
+        $cpt++;
+        // Rendre certain noeud en mode flux 
+        // $children[$childName][] = fluxXmlObjToArr($child, $namespace);
+        $children[$cpt][] = fluxXmlObjToArr($child, $namespace);
+			}
+		}
 
-function trace_xml($child, $parser_xpath = ""){
-    global $parent_node, $parser_xpath_old;
-    for($i=0; $i < $child->childNodes->length;$i++){
-      if($child->childNodes->item($i)->hasChildNodes()){
-        $parser_xpath = $child->getNodePath();
-        trace_xml($child->childNodes->item($i), $parser_xpath);
-      }
-    }
+		$tableau = array(
+			'name' => $name,
+		);
+		if ($text) {
+			$tableau['text'] = $text;
+		}
+		if ($attributes) {
+			$tableau['attributes'] = $attributes;
+		}
+		if ($children) {
+			$tableau['children'] = $children;
+		}
+	}
 
-    if(!strpos($parser_xpath, $parser_xpath_old)){
-      $parser_xpath_old = $parser_xpath;
-      $parent_node[] = $parser_xpath;
-    }
-}
-
-//conversion du xpath DomDocument en xpath SimpleXML
-function getxpathxml(){
-  global $parent_node;
-  foreach ($parent_node as $k => $v){
-    if(empty($v)){
-      unset($parent_node[$k]);
-    }else{
-      $capture = preg_split("/\/([a-zA-Z]*)\[?(\d*)\]?/", $parent_node[$k], NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-
-      $total = count($capture);
-      foreach ($capture as $key => $value) {
-        if($key < 1){
-          $parent_node[$k] = "children/";
-        }else{
-          if(is_numeric($capture[$key])){
-            $parent_node[$k] .= intval($capture[$key]-1);
-            if($key <  $total-1){
-              $parent_node[$k] .= "/";
-            }
-          }else{
-            if($key > 1 and $key <  $total){
-              $parent_node[$k] .= "children/";
-            }
-            $parent_node[$k] .= strtolower($capture[$key]);
-            if($key <  $total-1){
-              $parent_node[$k] .= "/";
-            }
-            if(!is_numeric($capture[$key+1]) and $key < $total-1){
-              $parent_node[$k] .= "0/";
-            }
-          }
-        }
-      }
-    }
-  }
-  $parent_node = array_unique($parent_node);
-  return $parent_node;
-}
-
-function cut_xpath(){
-  global $parent_node;
-  getxpathxml();
-  foreach ($parent_node as $key => $value){
-    $tab_current = current($parent_node);
-    $tab_next = next($parent_node);
-    if(strlen($tab_next)<=strlen($tab_current)){
-      $res = strpos($tab_current,$tab_next);
-      if($res !== false){
-        unset($parent_node[$key]);
-      }
-    }
-  }
-  return $parent_node;
-}
-
-function profondeur($str){
-  $chemin ="";
-  $liste_noeud = array(
-    "paragraphe",
-    "chapitre",
-    "ousadresser",
-    "reference",
-    "serviceenligne",
-    "pourensavoirplus",
-    "abreviation",
-  );
-  $capture = preg_split("/(children\/[a-zA-Z]+\/?[\d]?)+/", $str, NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-
-  for($k=0;$k<sizeof($capture);$k++){
-    if($capture[$k]<>"/"){
-      $val = explode('/',$capture[$k]);
-      // $tableau .= $capture[$k];
-      for($i=0;$i<sizeof($val);$i++){
-        if(in_array($val[$i],$liste_noeud, TRUE)){
-          $cap = $capture[$k];
-          $i = sizeof($val);
-        }
-      }
-
-      $pos = strpos($cap,$capture[$k]);
-
-      if($pos !== false){
-        $chemin .= $capture[$k];
-        $k = sizeof($capture);
-      }else{
-        $chemin .= $capture[$k];
-        $chemin .= "/";
-      }
-    }
-  }
-  return $chemin;
+	return $tableau;
 }
 
 ?>
