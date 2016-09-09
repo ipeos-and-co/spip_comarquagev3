@@ -295,11 +295,12 @@ function fluxXmlObjToArr($obj, $utiliser_namespace = false) {
       $cpt = -1;
 			foreach ($objChildren as $childName => $child) {
 				$childName = strtolower((string)$childName);
+        // n'est pas utiliser
 				if (!empty($ns)) {
 					$childName = $ns . ':' . $childName;
 				}
         $cpt++;
-        // Rendre certain noeud en mode flux 
+        // Rendre certain noeud en mode flux
         // $children[$childName][] = fluxXmlObjToArr($child, $namespace);
         $children[$cpt][] = fluxXmlObjToArr($child, $namespace);
 			}

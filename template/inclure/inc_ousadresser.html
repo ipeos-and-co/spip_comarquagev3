@@ -1,0 +1,6 @@
+<div class="[(#ENV{table}|table_valeur{0/name})]">
+<BOUCLE_element(DATA){source tableau, #ENV{table}}>
+  [<h3 class="#VALEUR{children/titre/0/name}"><a href="[(#VALEUR{children/ressourceweb/0/attributes/url})]" class="[(#VALEUR{children/ressourceweb/0/name})]" target="_blank">(#VALEUR{children/titre/0/text})</a></h3>]
+  [<p class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</p>]
+</BOUCLE_element>
+</div>

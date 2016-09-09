@@ -1,0 +1,13 @@
+<B_element>
+<div class="[(#ENV{table}|table_valeur{0/name})]">
+  <h3><:comarquage:pour_en_savoir_plus:></h3>
+  <ul>
+<BOUCLE_element(DATA){source tableau, #ENV{table}}>
+    [<li>
+      <a href="[(#VALEUR{attributes/url})]" target="_blank">(#VALEUR{children/titre/0/text})</a><br />
+      [<small>(#VALEUR{children/source/0/text})</small>]
+    </li>]
+</BOUCLE_element>
+  </ul>
+</div>
+</B_element>
