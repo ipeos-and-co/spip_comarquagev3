@@ -1,26 +1,12 @@
 [(#SET{attribut, #ARRAY})]
 <div class="fiche">
 <BOUCLE_simplexml(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
-  [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+  [(#INCLURE{fond=template/inclure/inc_fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
   [<h2>(#VALEUR{children/dc:title/0/text})</h2>]
   <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate) - ][(#VALEUR{children/dc:contributor/0/text})]</small>
 </BOUCLE_simplexml>
+
 <BOUCLE_fiche(DATA){source domdocument, #ENV{url}#ENV{xml}.xml, namespace}>
-  <BOUCLE_element_interne(DATA){source tableau, #VALEUR{children}}>
-    <BOUCLE_element(DATA){source tableau, #VALEUR}>
-      [(#SET{file,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
-      [(#SET{attribut,#GET{attribut}|push{#GET{file}}})]
-      [(#SET{file,[inc_(#GET{file})]})]
-      [(#REM) #GET{file} ]
-      [(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url}|oui)
-        [(#SET{att_url,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url})]})]
-      ]
-      [(#CHEMIN{template/inclure/#GET{file}.html}|oui)
-        <INCLURE{fond=template/inclure/#GET{file},env}{table=#VALEUR}{attribut=#GET{attribut}}{att_url=#GET{att_url}} />
-      ]
-      <BOUCLE_recursive(BOUCLE_element_interne)></BOUCLE_recursive>
-      [(#SET{attribut, #ARRAY})]
-    </BOUCLE_element>
-  </BOUCLE_element_interne>
+  <INCLURE{fond=template/inclure/children,env}{table=#VALEUR} />
 </BOUCLE_fiche>
 </div>

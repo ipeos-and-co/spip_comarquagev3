@@ -1,0 +1,12 @@
+<BOUCLE_element_interne(DATA){source tableau, #ENV{table}|table_valeur{children}}>
+  <BOUCLE_element(DATA){source tableau, #VALEUR}>
+    [(#SET{file,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
+    [(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url}|oui)
+      [(#SET{att_url,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/url})]})]
+    ]
+    [(#CHEMIN{template/inclure/#GET{file}.html}|oui)
+      <INCLURE{fond=template/inclure/#GET{file},env}{table=#VALEUR}{att_url=#GET{att_url}} />
+    ]
+    <BOUCLE_recursive(BOUCLE_element)></BOUCLE_recursive>
+  </BOUCLE_element>
+</BOUCLE_element_interne>

@@ -1,0 +1,10 @@
+<BOUCLE_element_interne(DATA){source tableau, #ENV{table}|table_valeur{children}}>
+  <BOUCLE_element(DATA){source tableau, #VALEUR}>
+    [(#SET{file,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
+    [(#CHEMIN{template/inclure/#GET{file}.html}|oui)
+      <INCLURE{fond=template/inclure/#GET{file},env}{table=#VALEUR}{attribut=#GET{attribut}}{att_url=#ENV{att_url}} />
+    ]
+  </BOUCLE_element>
+</BOUCLE_element_interne>
+  [(#ENV{table}|table_valeur{text})]
+<//B_element_interne>

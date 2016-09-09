@@ -1,5 +1,5 @@
 <BOUCLE_noeud(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
-    [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+    [(#INCLURE{fond=template/inclure/inc_fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
     <div class="noeud">
         <div class="center">
             <h2>[<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/dc:title/0/text})]" />] #VALEUR{children/dc:title/0/text}</h2>
