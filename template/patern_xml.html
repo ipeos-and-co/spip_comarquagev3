@@ -11,6 +11,11 @@
 [(#GET{inc_xml}|=={noeud}|oui)
     [(#INCLURE{fond=template/noeud, env}{xml=#GET{xml}}{url=#GET{url}})]
 ]
+
 [(#GET{inc_xml}|=={fiche}|oui)
     [(#INCLURE{fond=template/fiche, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+
+[(#GET{inc_xml}|=={commentFaireSi}|oui)
+    [(#INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}})]
 ]

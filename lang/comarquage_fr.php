@@ -12,6 +12,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'questionreponses' => 'Questions ? Réponses !',
 	'pour_en_savoir_plus' => 'Pour en savoir plus',
 	'verifier_le' => 'Vérifié le',
+	'ousadresser' => 'Où s\'informer ?',
+	'voiraussi' => 'Et aussi sur service-public.fr',
+	'commentfairesi' => 'Comment faire si…',
+	'tous_commentfairesi' => 'Tous les Comment faire si…',
+	'dernieres_actualites' => 'Dernières actualités',
 );
 
 ?>

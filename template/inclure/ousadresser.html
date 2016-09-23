@@ -1,0 +1,24 @@
+<B_element>
+<div class="[(#ENV{table}|table_valeur{0/name})]">
+  <h3><:comarquage:ousadresser:></h3>
+<BOUCLE_element(DATA){source tableau, #ENV{table}}>
+  [<p class="#VALEUR{children/titre/0/name}"><a href="#SELF|parametre_url{xml,#VALEUR{attributes/id}}">(#VALEUR{children/titre/0/text})</a>
+  [<br /><small class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</small>]</p>]
+  <BOUCLE_text(DATA){source tableau, #VALEUR{children/texte}}>
+    <BOUCLE_paragraphe(DATA){source tableau, #VALEUR{children/paragraphe}}>
+      [<p class="#VALEUR{name}">(#VALEUR{text})</p>]
+    </BOUCLE_paragraphe>
+    <BOUCLE_chapitre(DATA){source tableau, #VALEUR{children/chapitre}}>
+      <BOUCLE_titre(DATA){source tableau, #VALEUR{children/titre}}>
+        <BOUCLE_titre_paragraphe(DATA){source tableau, #VALEUR{children/paragraphe}}>
+          [<p class="#VALEUR{name}"><b>(#VALEUR{text})</b></p>]
+        </BOUCLE_titre_paragraphe>
+      </BOUCLE_titre>
+      <BOUCLE_texte_paragraphe(DATA){source tableau, #VALEUR{children/paragraphe}}>
+        [<p class="#VALEUR{name}">(#VALEUR{text})</p>]
+      </BOUCLE_texte_paragraphe>
+    </BOUCLE_chapitre>
+  </BOUCLE_text>
+</BOUCLE_element>
+</div>
+</B_element>

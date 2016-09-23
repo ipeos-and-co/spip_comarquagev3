@@ -1,0 +1,10 @@
+[(#REM) Voir Aussi]
+<B_voiraussi>
+<div class="voiraussi">
+  <h3><:comarquage:voiraussi:></h3>
+<BOUCLE_voiraussi(DATA){source tableau, #ENV{table}}>
+  [(#INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}})]
+  [(#INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}})]
+</BOUCLE_voiraussi>
+</div>
+</B_voiraussi>
