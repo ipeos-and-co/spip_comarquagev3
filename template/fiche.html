@@ -1,6 +1,6 @@
 <div class="fiche">
 <BOUCLE_simplexml(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
-  [(#INCLURE{fond=template/inclure/inc_fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+  [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
   [<h2>(#VALEUR{children/dc:title/0/text})</h2>]
   <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate) - ][(#VALEUR{children/dc:contributor/0/text})]</small>
 
@@ -12,22 +12,26 @@
   [(#SET{pourensavoirplus,[(#VALEUR{children/pourensavoirplus})]})]
   [(#REM) QuestionReponse]
   [(#SET{questionreponse,[(#VALEUR{children/questionreponse})]})]
+  [(#REM) ServiceEnLigne]
+  [(#SET{serviceenligne,[(#VALEUR{children/serviceenligne})]})]
 </BOUCLE_simplexml>
 
 <BOUCLE_fiche(DATA){source domdocument, #ENV{url}#ENV{xml}.xml}>
   <INCLURE{fond=template/flux_xml/children,env}{table=#VALEUR} />
 </BOUCLE_fiche>
+  [(#REM) serviceenligne ]
+  <INCLURE{fond=template/inclure/serviceenligne,env}{table=#GET{serviceenligne}} />
 
   [(#REM) OuSAdresser ]
-  <INCLURE{fond=template/inclure/inc_ousadresser,env}{table=#GET{ousadresser}} />
+  <INCLURE{fond=template/inclure/ousadresser,env}{table=#GET{ousadresser}} />
 
   [(#REM) Reference]
-  <INCLURE{fond=template/inclure/inc_reference,env}{table=#GET{reference}} />
+  <INCLURE{fond=template/inclure/reference,env}{table=#GET{reference}} />
 
   [(#REM) PourEnSavoirPlus]
-  <INCLURE{fond=template/inclure/inc_pourensavoirplus,env}{table=#GET{pourensavoirplus}} />
+  <INCLURE{fond=template/inclure/pourensavoirplus,env}{table=#GET{pourensavoirplus}} />
 
   [(#REM) QuestionReponse]
-  <INCLURE{fond=template/inclure/inc_questionreponse,env}{table=#GET{questionreponse}} />
+  <INCLURE{fond=template/inclure/questionreponses,env}{table=#GET{questionreponse}} />
 
 </div>

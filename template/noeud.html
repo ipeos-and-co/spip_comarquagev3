@@ -16,36 +16,27 @@
         </BOUCLE_introduction>
 
         <div class="list">
-          [(#INCLURE{fond=template/inclure/sousdossier, env}{table=#VALEUR{children/sousdossier}})]
 
-          [(#INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}})]
+          <INCLURE{fond=template/inclure/soustheme, env}{table=#VALEUR{children/soustheme}}/>
+          <INCLURE{fond=template/inclure/sousdossier, env}{table=#VALEUR{children/sousdossier}}/>
 
-          [(#INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}})]
+          <INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}}/>
 
-          [(#INCLURE{fond=template/inclure/servicesenligne, env}{table=#VALEUR{children/serviceenligne}})]
+          <INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}}/>
 
-          [(#INCLURE{fond=template/inclure/ousadresser, env}{table=#VALEUR{children/ousadresser}})]
+          <INCLURE{fond=template/inclure/serviceenligne, env}{table=#VALEUR{children/serviceenligne}}/>
 
-          [(#INCLURE{fond=template/inclure/voiraussi, env}{table=#VALEUR{children/voiraussi}})]
+          <INCLURE{fond=template/inclure/ousadresser, env}{table=#VALEUR{children/ousadresser}}/>
 
-            <BOUCLE_soustheme(DATA){source tableau, #VALEUR{children/soustheme}}>
-                [<h3>(#VALEUR{children/titre/0/text})</h3>]
-                <B_dossier>
-                <ul>
-                <BOUCLE_dossier(DATA){source tableau, #VALEUR{children/dossier}}>
-                    <li>
-                        [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a>]
-                    </li>
-                </BOUCLE_dossier>
-                </ul>
-                </B_dossier>
-            </BOUCLE_soustheme>
+          <INCLURE{fond=template/inclure/voiraussi, env}{table=#VALEUR{children/voiraussi}}/>
+
+          <INCLURE{fond=template/inclure/reference, env}{table=#VALEUR{children/reference}}/>
         </div>
-        [(#INCLURE{fond=template/inclure/questionreponses, env}{table=#VALEUR{children/questionreponse}})]
-        [(#INCLURE{fond=template/inclure/pourensavoirplus, env}{table=#VALEUR{children/pourensavoirplus}})]
-        [(#INCLURE{fond=template/inclure/commentfairesi, env}{table=#VALEUR{children/commentfairesi}})]
+        <INCLURE{fond=template/inclure/questionreponses, env}{table=#VALEUR{children/questionreponse}}/>
+        <INCLURE{fond=template/inclure/pourensavoirplus, env}{table=#VALEUR{children/pourensavoirplus}}/>
+        <INCLURE{fond=template/inclure/commentfairesi, env}{table=#VALEUR{children/commentfairesi}}/>
 
         [(#REM) réference actualités]
-        [(#INCLURE{fond=template/inclure/indexactualite, env})]
+        <INCLURE{fond=template/inclure/indexactualite, env}/>
     </div>
 </BOUCLE_noeud>

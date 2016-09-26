@@ -9,9 +9,9 @@
             <div class="{$classTheme}">
                 [<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/titre/0/text})]" />]
                 <h3>[<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a>]</h3>
-                <ul class="spPublicationNoeud">
+                <ul class="spPublicationNoeud spip">
                     <BOUCLE_sousdossier(DATA){source tableau, #VALEUR{children/item}}{0,5}>
-                        [<li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a></li>]
+                        [<li><a href="[(#SELF|parametre_url{xml,#_item:VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a></li>]
                     </BOUCLE_sousdossier>
                     [<li>
                         <a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">...</a>

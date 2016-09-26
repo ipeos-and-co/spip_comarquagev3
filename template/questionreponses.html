@@ -2,11 +2,11 @@
 <BOUCLE_data_questionsReponses(DATA){source simplexml, #GET{url}questionsReponses.xml, namespace}>
     <div class="services_en_ligne">
         <div class="center">
-            <h2>[(#VALEUR{children/dc:title/0/text})]</h2>
+            <h2 class="surlignable">[(#VALEUR{children/dc:title/0/text})]</h2>
         </div>
         <B_item_questionsReponses>
         <div class="item_comment_faire_si noeudThemes">
-            <ul>
+            <ul class="spip">
             <BOUCLE_item_questionsReponses(DATA){source tableau, #VALEUR{children/groupe}}>
                 <BOUCLE_intra_loop1(DATA){source tableau, #VALEUR{children/questionreponse}}>
                     <li>

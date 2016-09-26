@@ -1,6 +1,6 @@
 [(#REM) Dossier]
 <B_noeud_dossier>
-  <ul class="dossier">
+  <ul class="dossier spip">
 <BOUCLE_noeud_dossier(DATA){source tableau, #ENV{table}}>
     <li>
         [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{children/titre/0/text}</a>]
