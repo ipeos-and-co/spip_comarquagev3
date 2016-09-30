@@ -1,0 +1,38 @@
+<BOUCLE_noeud(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
+    [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+    <div class="noeud">
+        <div class="center">
+            <h2>[<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/dc:title/0/text})]" />] #VALEUR{children/dc:title/0/text}</h2>
+            <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate) - ][(#VALEUR{children/dc:contributor/0/text})]</small>
+        </div>
+
+        <BOUCLE_introduction(DATA){source tableau, #VALEUR{children/introduction}}>
+          <BOUCLE_texte(DATA){source tableau, #VALEUR{children/texte}}>
+            <BOUCLE_paragraphe(DATA){source tableau, #VALEUR{children/paragraphe}}>
+              [<p class="paragraphe">
+                (#VALEUR{text})
+              </p>]
+            </BOUCLE_paragraphe>
+          </BOUCLE_texte>
+        </BOUCLE_introduction>
+
+        <INCLURE{fond=template/inclure/numerocerfa, env}{table=#VALEUR{children/numerocerfa}}/>
+        
+        <BOUCLE_fiche(DATA){source domdocument, #ENV{url}#ENV{xml}.xml}>
+        <BOUCLE_element_interne(DATA){source tableau, #VALEUR{children}}>
+          <BOUCLE_element(DATA){source tableau, #VALEUR}>
+            [(#VALEUR{name}|=={texte}|oui)
+              <INCLURE{fond=template/flux_xml/children,env}{table=#VALEUR} />
+            ]
+          </BOUCLE_element>
+        </BOUCLE_element_interne>
+        </BOUCLE_fiche>
+
+        <INCLURE{fond=template/inclure/serviceenlignealternatif, env}{table=#VALEUR{children/serviceenlignealternatif}}/>
+        <INCLURE{fond=template/inclure/lienweb, env}{table=#VALEUR{children/lienweb}}/>
+        <INCLURE{fond=template/inclure/noticeliee, env}{table=#VALEUR{children/noticeliee}}/>
+
+        <INCLURE{fond=template/inclure/ficheliee, env}{table=#VALEUR{children/ficheliee}}/>
+        <INCLURE{fond=template/inclure/ousadresser,env}{table=#VALEUR{children/ousadresser}} />
+    </div>
+</BOUCLE_noeud>

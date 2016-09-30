@@ -1,6 +1,6 @@
 <BOUCLE_element_interne(DATA){source tableau, #ENV{table}|table_valeur{children}}>
   <BOUCLE_element(DATA){source tableau, #VALEUR}>
-    [(#SET{file,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
+    [(#SET{file,[(#VALEUR{name})]})]
     [(#CHEMIN{template/flux_xml/#GET{file}.html}|oui)
       <INCLURE{fond=template/flux_xml/#GET{file},env}{table=#VALEUR}{att_url=#ENV{att_url}} />
     ]

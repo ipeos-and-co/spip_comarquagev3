@@ -61,11 +61,11 @@ function type_entrer($xml){
         case "questionsReponses":
             $chemin_xml = "questionsReponses";
             break;
-        case "questionsReponses":
-            $chemin_xml = "questionsReponses";
-            break;
         case "servicesEnLigne":
             $chemin_xml = "servicesEnLigne";
+            break;
+        case "centresDeContact":
+            $chemin_xml = "centresDeContact";
             break;
         case "index":
             $chemin_xml = "actualites";
@@ -190,6 +190,18 @@ function media_local($id){
             break;
         case "F23571":
             $name = "comment-faire.jpg";
+            break;
+        case "N31403":
+            $name = "associations.png";
+            break;
+        case "N31404":
+            $name = "associations.png";
+            break;
+        case "N31405":
+            $name = "associations.png";
+            break;
+        case "N31406":
+            $name = "associations.png";
             break;
         default:
             $name = " ";

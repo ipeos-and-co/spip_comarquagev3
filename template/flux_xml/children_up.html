@@ -1,0 +1,8 @@
+<BOUCLE_element(DATA){source tableau, #ENV{table}}>
+  [(#SET{file,[(#VALEUR{name})]})]
+  [(#CHEMIN{template/flux_xml/#GET{file}.html}|oui)
+    <INCLURE{fond=template/flux_xml/#GET{file},env}{table=#VALEUR}{att_url=#ENV{att_url}} />
+  ]
+</BOUCLE_element>
+  [(#ENV{table}|table_valeur{text})]
+<//B_element>

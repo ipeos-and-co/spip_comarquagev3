@@ -1,0 +1,18 @@
+#CACHE{3*24*3600}
+<BOUCLE_data_centresdecontact(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
+    [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+    <div class="centresdecontact">
+      <h2 class="surlignable">[(#VALEUR{children/audience/0/text})]</h2>
+      <div class="item_centresdecontact noeudThemes">
+          <B_intra_loop1>
+          <ul class="spip">
+              <BOUCLE_intra_loop1(DATA){source tableau, #VALEUR{children/contact}}>
+                  <li>
+                      [<a href="https://lannuaire.service-public.fr/centres-contact/(#VALEUR{attributes/id})" target="_blank">[(#VALEUR{children/titre/0/text})]</a>]
+                  </li>
+              </BOUCLE_intra_loop1>
+            </ul>
+            </B_intra_loop1>
+        </div>
+      </div>
+</BOUCLE_data_centresdecontact>

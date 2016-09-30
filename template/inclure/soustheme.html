@@ -1,7 +1,7 @@
 <BOUCLE_soustheme(DATA){source tableau, #ENV{table}}>
-    [<h3>(#VALEUR{children/titre/0/text})</h3>]
+    [<h4>(#VALEUR{children/titre/0/text})</h4>]
     <B_dossier>
-    <ul class="spip">
+    <ul class="soustheme spip">
     <BOUCLE_dossier(DATA){source tableau, #VALEUR{children/dossier}}>
         <li>
             [<a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a>]

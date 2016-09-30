@@ -17,6 +17,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'commentfairesi' => 'Comment faire si…',
 	'tous_commentfairesi' => 'Tous les Comment faire si…',
 	'dernieres_actualites' => 'Dernières actualités',
+	'telecharger_formulaire' => 'Télécharger le formulaire',
+	'explication_pratiques' => 'Pour toute explication, consulter les fiches pratiques :',
+	'aussi_utiliser' => 'Vous pouvez aussi utiliser :',
+	'service_ligne' => 'Service en ligne >',
+	'cerfa' => 'Cerfa n°',
+	'aider_remplir_form' => 'Pour vous aider à remplir le formulaire :',
 );
 
 ?>

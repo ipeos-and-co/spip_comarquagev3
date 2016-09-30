@@ -1,31 +1,37 @@
 <B_element>
-<div class="[(#ENV{table}|table_valeur{0/name})]">
-  <h3><:comarquage:ousadresser:></h3>
-<BOUCLE_element(DATA){source tableau, #ENV{table}}>
-  [(#SET{id_ousadresser,#VALEUR{attributes/id}})]
-  [<p class="#VALEUR{children/titre/0/name}"><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a>
-  [<br /><small class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</small>]</p>]
-
-  <BOUCLE_texte_flux(DATA){source domdocument, #ENV{url}#ENV{xml}.xml, namespace}>
-    <BOUCLE_element_interne(DATA){source tableau, #VALEUR{children}}>
-      <BOUCLE_flux(DATA){source table, #VALEUR}>
-        [(#SET{name_noeud,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
-        [(#SET{id_noeud,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/id})]})]
-        <BOUCLE_si_id(CONDITION){si #GET{name_noeud}|=={'ousadresser'}|et{#GET{id_noeud}|=={#GET{id_ousadresser}}}}>
-          <BOUCLE_sous_flux(DATA){source table, #VALEUR}>
-            <BOUCLE_sous_noeud(DATA){source table, #VALEUR}>
-              [(#SET{noeud_interne,[(#VALEUR{0/name}|strtolower)]})]
-              <BOUCLE_si_name(CONDITION){si #GET{noeud_interne}|=={'texte'}}>
-                <BOUCLE_sous_flux_noeud(DATA){source table, #VALEUR}{0,1}>
-                  <INCLURE{fond=template/flux_xml/children,env}{table=#VALEUR} />
-                </BOUCLE_sous_flux_noeud>
-              </BOUCLE_si_name>
-            </BOUCLE_sous_noeud>
-          </BOUCLE_sous_flux>
-        </BOUCLE_si_id>
-      </BOUCLE_flux>
-    </BOUCLE_element_interne>
-  </BOUCLE_texte_flux>
-</BOUCLE_element>
+<div class="[(#ENV{table}|table_valeur{0/name})] panel panel-primary">
+  <div class="panel-heading">
+    <h3><:comarquage:ousadresser:></h3>
+  </div>
+  <div class="panel-body">
+    <BOUCLE_element(DATA){source tableau, #ENV{table}}>
+      [(#SET{id_ousadresser,#VALEUR{attributes/id}})]
+      [<p class="#VALEUR{children/titre/0/name}"><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a>
+      [<br /><small class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</small>]</p>]
+      [<p class="complement">
+        (#VALEUR{children/complement/0/text})
+      </p>]
+      <BOUCLE_texte_flux(DATA){source domdocument, #ENV{url}#ENV{xml}.xml, namespace}>
+        <BOUCLE_element_interne(DATA){source tableau, #VALEUR{children}}>
+          <BOUCLE_flux(DATA){source table, #VALEUR}>
+            [(#SET{name_noeud,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/name}|strtolower)]})]
+            [(#SET{id_noeud,[(#_element_interne:VALEUR{[(#COMPTEUR_BOUCLE|moins{1})]/attributes/id})]})]
+            <BOUCLE_si_id(CONDITION){si #GET{name_noeud}|=={'ousadresser'}|et{#GET{id_noeud}|=={#GET{id_ousadresser}}}}>
+              <BOUCLE_sous_flux(DATA){source table, #VALEUR}>
+                <BOUCLE_sous_noeud(DATA){source table, #VALEUR}>
+                  [(#SET{noeud_interne,[(#VALEUR{0/name}|strtolower)]})]
+                  <BOUCLE_si_name(CONDITION){si #GET{noeud_interne}|=={'texte'}}>
+                    <BOUCLE_sous_flux_noeud(DATA){source table, #VALEUR}{0,1}>
+                      <INCLURE{fond=template/flux_xml/children,env}{table=#VALEUR} />
+                    </BOUCLE_sous_flux_noeud>
+                  </BOUCLE_si_name>
+                </BOUCLE_sous_noeud>
+              </BOUCLE_sous_flux>
+            </BOUCLE_si_id>
+          </BOUCLE_flux>
+        </BOUCLE_element_interne>
+      </BOUCLE_texte_flux>
+    </BOUCLE_element>
+  </div>
 </div>
 </B_element>

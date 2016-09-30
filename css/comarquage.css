@@ -1,0 +1,16 @@
+.menu ul.list-inline a{
+  color:#333;
+}
+
+.img_actu{
+  height:auto!important;
+  width:100px!important;
+}
+
+.listesituations{
+  margin-bottom: 1em;
+}
+.panel .panel-heading h3{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

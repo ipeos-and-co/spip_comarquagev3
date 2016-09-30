@@ -1,6 +1,4 @@
-#CACHE{3*24*3600}
 [(#REM) Modèle pour le comarquage ]
-
 [(#SET{parametres,#ARRAY})]
 
 [(#SET{categorie, #ENV{categorie,'particuliers'}})]
@@ -9,4 +7,4 @@
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{categorie,#GET{categorie}}}}
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{xml,#GET{xml}}}}
 
-[(#INCLURE{fond=template/patern_xml, env, parametres=#GET{parametres}})]
+<INCLURE{fond=template/patern_xml, env, parametres=#GET{parametres}}/>

@@ -1,0 +1,14 @@
+<B_lienweb>
+<p class="[(#VALEUR{attributes/name})]">
+<BOUCLE_lienweb(DATA){source tableau, #ENV{table}}>
+  [(#VALEUR{attributes/poids}|oui)
+    [<a href="(#VALEUR{attributes/url})" target="_blank" class="btn btn-success boutons"><:comarquage:telecharger_formulaire:> \[#VALEUR{attributes/poids}\]</a>]
+  ]
+  [(#VALEUR{attributes/poids}|non)
+    [<a href="(#VALEUR{attributes/url})" target="_blank" class="btn btn-success boutons"><:comarquage:acceder_service_ligne:></a>]
+  ]
+  <br />
+  [<small>(#VALEUR{children/source/0/text})</small>]
+</BOUCLE_lienweb>
+</p>
+</B_lienweb>

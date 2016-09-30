@@ -1,3 +1,21 @@
-<ul class="[(#ENV{table}|table_valeur{name})] spip">
-  <INCLURE{fond=template/flux_xml/children,env}{table=#ENV{table}} />
-</ul>
+<div class="tabs">
+  <ul class="[(#ENV{table}|table_valeur{name})] nav nav-tabs spip" role="tablist">
+    <BOUCLE_element_interne(DATA){source tableau, #ENV{table}|table_valeur{children}}>
+        <BOUCLE_element(DATA){source tableau, #VALEUR}>
+          <BOUCLE_situation_element_interne(DATA){source tableau, #VALEUR{children}}>
+            <BOUCLE_element2(DATA){source tableau, #VALEUR}>
+              [<li role="tab_0" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                  (#VALEUR{text})
+                </a>
+              </li>]
+            </BOUCLE_element2>
+          </BOUCLE_situation_element_interne>
+        </BOUCLE_element>
+      </BOUCLE_element_interne>
+  </ul>
+  <div class="tab-content">
+    <INCLURE{fond=template/flux_xml/children,env}{table=#ENV{table}} />
+  </div>
+
+</div>

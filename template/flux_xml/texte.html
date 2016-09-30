@@ -1,3 +1,9 @@
-<div class="[(#ENV{table}|table_valeur{name})] texte">
+<BOUCLE_element_interne(DATA){source tableau, #ENV{table}|table_valeur{children}}>
+  <BOUCLE_element(DATA){source tableau, #VALEUR}>
+    [(#SET{chapitre,#VALEUR{name}})]
+  </BOUCLE_element>
+</BOUCLE_element_interne>
+
+<div class="[(#ENV{table}|table_valeur{name})] [(#GET{chapitre}|=={chapitre}|oui) panel-group]" [(#GET{chapitre}|=={chapitre}|oui) id="accordion" role="tablist" aria-multiselectable="true"]>
   <INCLURE{fond=template/flux_xml/children,env}{table=#ENV{table}} />
 </div>

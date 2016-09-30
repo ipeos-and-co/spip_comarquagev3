@@ -1,3 +1,4 @@
 - gestion des pivots
 - moteur de recherche
-- résoudre l'affichage des mini bloque dans les fiches (service en ligne, ousadresser ...).
+- prendre en charge les redirections
+- résoudre l'affichage des mini bloque dans les fiches (service en ligne, ousadresser ...)(ref: F1122.xml/ asso).

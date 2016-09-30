@@ -19,3 +19,19 @@
 [(#GET{inc_xml}|=={commentFaireSi}|oui)
     [(#INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}})]
 ]
+
+[(#GET{inc_xml}|=={ressources}|oui)
+    [(#INCLURE{fond=template/ressources, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+
+[(#GET{inc_xml}|=={questionsReponses}|oui)
+    [(#INCLURE{fond=template/questionsreponses, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+
+[(#GET{inc_xml}|=={servicesEnLigne}|oui)
+    [(#INCLURE{fond=template/servicesenligne, env}{xml=#GET{xml}}{url=#GET{url}})]
+]
+
+[(#GET{inc_xml}|=={centresDeContact}|oui)
+    [(#INCLURE{fond=template/centresdecontact, env}{xml=#GET{xml}}{url=#GET{url}})]
+]

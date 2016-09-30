@@ -1,4 +1,6 @@
 [(#SET{att_url,[(#ENV{table}|table_valeur{attributes/url})]})]
-<div class="[(#ENV{table}|table_valeur{name})]">
-  <INCLURE{fond=template/flux_xml/children,env}{table=#ENV{table}}{att_url=#GET{att_url}} />
+<div class="[(#ENV{table}|table_valeur{name})] panel panel-primary">
+  <div class="panel-body">
+    <INCLURE{fond=template/flux_xml/children,env}{table=#ENV{table}}{att_url=#GET{att_url}} />
+  </div>
 </div>

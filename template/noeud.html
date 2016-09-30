@@ -2,7 +2,9 @@
     [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
     <div class="noeud">
         <div class="center">
-            <h2>[<img src="(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]})" alt="[(#VALEUR{children/dc:title/0/text})]" />] #VALEUR{children/dc:title/0/text}</h2>
+            <h3>
+              [(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]}|balise_img{[(#VALEUR{children/dc:titre/0/text})]}|image_reduire{50,50})]
+              #VALEUR{children/dc:title/0/text}</h3>
         </div>
 
         <BOUCLE_introduction(DATA){source tableau, #VALEUR{children/introduction}}>
@@ -16,14 +18,13 @@
         </BOUCLE_introduction>
 
         <div class="list">
-
           <INCLURE{fond=template/inclure/soustheme, env}{table=#VALEUR{children/soustheme}}/>
           <INCLURE{fond=template/inclure/sousdossier, env}{table=#VALEUR{children/sousdossier}}/>
 
           <INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}}/>
 
           <INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}}/>
-
+          <hr />
           <INCLURE{fond=template/inclure/serviceenligne, env}{table=#VALEUR{children/serviceenligne}}/>
 
           <INCLURE{fond=template/inclure/ousadresser, env}{table=#VALEUR{children/ousadresser}}/>
@@ -32,6 +33,7 @@
 
           <INCLURE{fond=template/inclure/reference, env}{table=#VALEUR{children/reference}}/>
         </div>
+
         <INCLURE{fond=template/inclure/questionreponses, env}{table=#VALEUR{children/questionreponse}}/>
         <INCLURE{fond=template/inclure/pourensavoirplus, env}{table=#VALEUR{children/pourensavoirplus}}/>
         <INCLURE{fond=template/inclure/commentfairesi, env}{table=#VALEUR{children/commentfairesi}}/>
