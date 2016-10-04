@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'service_ligne' => 'Service en ligne >',
 	'cerfa' => 'Cerfa n°',
 	'aider_remplir_form' => 'Pour vous aider à remplir le formulaire :',
+	'centredecontact' => 'Centre de contact',
 );
 
 ?>

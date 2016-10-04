@@ -1,17 +1,20 @@
+#CACHE{3*24*3600}
 [(#REM) Menu]
 [(#INCLURE{fond=template/inclure/menu, env})]
 
-[(#REM) Commant faire si
-[(#INCLURE{fond=template/commentfairesi, env})]
-]
+[(#REM) Services en ligne]
+[(#INCLURE{fond=template/menu_servicesenligne, env})]
 
-[(#REM) Services en ligne
-[(#INCLURE{fond=template/inclure/sevicesenligne, env})]
-]
 
-[(#REM) Question reponses
-[(#INCLURE{fond=template/inclure/questionsreponses, env})]
-]
+[(#REM) Question reponses]
+[(#INCLURE{fond=template/menu_questionsreponses, env})]
+
+
+[(#REM) Commant faire si]
+[(#INCLURE{fond=template/menu_commentfairesi, env})]
+
+[(#REM) Centre de contact]
+[(#INCLURE{fond=template/menu_centresdecontact, env})]
 
 [(#REM) Actualites]
 [(#INCLURE{fond=template/inclure/actualites, env})]

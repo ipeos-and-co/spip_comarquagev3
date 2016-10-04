@@ -1,10 +1,11 @@
+#CACHE{3*24*3600}
 [(#REM) Voir Aussi]
 <B_voiraussi>
 <div class="voiraussi panel panel-primary">
   <div class="panel-heading">
     <h3><:comarquage:voiraussi:></h3>
   </div>
-  <div class="panel-body">  
+  <div class="panel-body">
   <BOUCLE_voiraussi(DATA){source tableau, #ENV{table}}>
     [(#INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}})]
     [(#INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}})]

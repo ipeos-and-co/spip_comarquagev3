@@ -14,3 +14,129 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+
+/************/
+/****Panel***/
+/************/
+.media{
+  overflow: hidden;
+}
+
+.media-body, .media-left, .media-right {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.media-left, .media > .pull-left {
+    padding-right: 10px;
+}
+
+.media-object {
+    display: block;
+}
+
+.media-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.media img{
+    vertical-align: middle;
+    max-width: inherit;
+}
+
+/******************/
+/***list-inline****/
+/******************/
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin:0;
+}
+
+/***********/
+/***tabs****/
+/***********/
+ul.nav-tabs {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-left: 0px;
+}
+.nav > li {
+    position: relative;
+    display: block;
+}
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a {
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    margin:0 2px 0 0;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    background-color: transparent!important;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff!important;
+    border: 1px solid #ddd!important;
+    border-bottom-color: transparent!important;
+}
+
+.nav::before{
+  display: table;
+  content: " ";
+}
+
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus{
+    border-color: #eee #eee #ddd #FFF!important;
+    color: #c85000!important;
+    background: inherit;
+}
+
+.nav > li > a:focus, .nav > li > a:hover, .nav > li > a:active{
+    text-decoration: none;
+    background: #eee!important;
+}
+
+.nav::after{
+  clear:both;
+  display: table;
+  content: " ";
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+.tab-pane{
+  padding:1em;
+  background-color: #fdfbfb;
+}

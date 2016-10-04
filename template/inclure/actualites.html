@@ -10,7 +10,7 @@
 ]
 <BOUCLE_actualites(DATA){source simplexml, #ENV{url}actualites/index.xml, namespace}>
     <div class="actualites">
-        <h3><:comarquage:actualites:></h3>
+        <h2><:comarquage:actualites:></h2>
         <BOUCLE_item_content(DATA){source tableau, #VALEUR{children/refactualite}}{0,10}>
             <div class="media">
               <B_imageillustration>

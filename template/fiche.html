@@ -1,6 +1,8 @@
+#CACHE{3*24*3600}
 <div class="fiche">
 <BOUCLE_simplexml(DATA){source simplexml, #ENV{url}#ENV{xml}.xml, namespace}>
   [(#INCLURE{fond=template/inclure/fildariane, env}{table=#VALEUR{children/fildariane/0/children/niveau}})]
+
   [<h3>(#VALEUR{children/dc:title/0/text})</h3>]
   <small>[<:comarquage:verifier_le:> (#VALEUR{children/dc:date/0/text}|affdate) - ][(#VALEUR{children/dc:contributor/0/text})]</small>
 
