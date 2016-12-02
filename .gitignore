@@ -1,0 +1,15 @@
+# Specifies files to intentionally ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*.orig
+*.bak
+*.BAK
+*.tmp
+*.TMP
+*.sw*
+*.old
+*.pyc
+*.sqlite
+*.sqlite3
+*.DS_Store
+Thumbs.db

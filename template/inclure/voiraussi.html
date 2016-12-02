@@ -7,8 +7,8 @@
   </div>
   <div class="panel-body">
   <BOUCLE_voiraussi(DATA){source tableau, #ENV{table}}>
-    [(#INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}})]
-    [(#INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}})]
+    <INCLURE{fond=template/inclure/dossier, env}{table=#VALEUR{children/dossier}} />
+    <INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}} />
   </BOUCLE_voiraussi>
   </div>
 </div>

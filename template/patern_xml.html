@@ -5,33 +5,33 @@
 [(#SET{url,[(#GET{categorie}|table_valeur{XMLURL})]})]
 
 [(#GET{inc_xml}|=={accueil}|oui)
-    [(#INCLURE{fond=template/accueil, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/accueil, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={noeud}|oui)
-    [(#INCLURE{fond=template/noeud, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/noeud, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={fiche}|oui)
-    [(#INCLURE{fond=template/fiche, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/fiche, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={commentFaireSi}|oui)
-    [(#INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={ressources}|oui)
-    [(#INCLURE{fond=template/ressources, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/ressources, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={questionsReponses}|oui)
-    [(#INCLURE{fond=template/questionsreponses, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/questionsreponses, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={servicesEnLigne}|oui)
-    [(#INCLURE{fond=template/servicesenligne, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/servicesenligne, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={centresDeContact}|oui)
-    [(#INCLURE{fond=template/centresdecontact, env}{xml=#GET{xml}}{url=#GET{url}})]
+    <INCLURE{fond=template/centresdecontact, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
