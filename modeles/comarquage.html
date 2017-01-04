@@ -4,6 +4,7 @@
   <comarquage|categorie=associations>
   <comarquage|categorie=entreprises>
 -->]
+<BOUCLE_masque_prive(CONDITION){si #REM|test_espace_prive|non}>
 [(#SET{parametres,#ARRAY})]
 
 [(#SET{categorie, #ENV{categorie,'particuliers'}})]
@@ -13,3 +14,13 @@
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{xml,#GET{xml}}}}
 
 <INCLURE{fond=template/patern_xml, env, parametres=#GET{parametres}}/>
+</BOUCLE_masque_prive>
+<div class="liste-objets comarquage-prive-info">
+  <p style="text-align:center;">
+    &lang;comarquage|categorie=#ENV{categorie}&rang;
+  </p>
+  <p>
+    <:comarquage:prive_visible_public:>
+  </p>
+</div>
+<//B_masque_prive>

@@ -24,6 +24,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cerfa' => 'Cerfa n°',
 	'aider_remplir_form' => 'Pour vous aider à remplir le formulaire :',
 	'centredecontact' => 'Centre de contact',
+	'prive_visible_public' => 'Les informations de comarquage ne sont pas chargé
+	dans l\'espace d\'administration.',
 );
 
 ?>
