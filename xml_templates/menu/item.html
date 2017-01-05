@@ -1,0 +1,29 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<BOUCLE_menu_items(DATA){source simplexml,#ENV{url}|copie_locale{modif}}
+  {datapath root/children/item}{datacache #GET{datacache}}>
+  <div class="media">
+    <div class="media-left">
+      <a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">
+        [(#CHEMIN{images/[(#VALEUR{attributes/id}|media_local)]}|balise_img{[(#VALEUR{children/titre/0/text})]}|image_reduire{50,50})]
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">[<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a>]</h4>
+      <ul class="list-inline">
+        <BOUCLE_menu_sous_items(DATA){source tableau, #VALEUR{children/item}}{0,5}>
+        [<li class="item"><a href="[(#SELF|parametre_url{xml, #VALEUR{attributes/id}})]">(#VALEUR{children/titre/0/text})</a></li>]
+      </BOUCLE_menu_sous_items>
+      [<li>
+        <a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">...</a>
+      </li>]
+    </ul>
+  </div>
+</div>
+<hr />
+</BOUCLE_menu_items>

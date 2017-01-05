@@ -1,0 +1,19 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_fiche>
+<div class="panel panel-info fiche">
+  <div class="panel-body">
+    <ul class="spip">
+<BOUCLE_fiche(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+  {datapath root/children/fiche}{datacache #GET{datacache}}>
+    <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
+</BOUCLE_fiche>
+    </ul>
+  </div>
+</div>
+</B_fiche>

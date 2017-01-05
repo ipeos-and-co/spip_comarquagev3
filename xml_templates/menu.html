@@ -1,0 +1,17 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+[(#SET{url, #ENV{url}menu.xml})]
+
+<B_menu>
+<div class="menu">
+<BOUCLE_menu(DATA){source simplexml,#GET{url}|copie_locale{modif}}
+  {datapath root/children}{datacache #GET{datacache}}>
+  [(#CLE|in_array{#LISTE{audience,item}}|oui)
+  <INCLURE{fond=xml_templates/menu/#CLE}{url=#GET{url}} />]
+</BOUCLE_menu>
+</div>
+</B_menu>

@@ -1,0 +1,22 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_questionreponse>
+<div class="questionreponse panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><:comarquage:questionreponses:></h3>
+  </div>
+  <div class="panel-body">
+    <ul class="spip">
+    <BOUCLE_questionreponse(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+      {datapath root/children/questionreponse}{datacache #GET{datacache}}>
+        <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
+    </BOUCLE_questionreponse>
+    </ul>
+  </div>
+</div>
+</B_questionreponse>

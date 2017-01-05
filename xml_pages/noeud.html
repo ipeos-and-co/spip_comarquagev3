@@ -1,0 +1,22 @@
+[(#SET{url, #ENV{url}#ENV{xml}.xml})]
+
+<div class="page-noeud">
+  <INCLURE{fond=xml_templates/balises/fildariane}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/titre_noeud}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/introduction}{url=#GET{url}} />
+
+  <div class="list">
+    <INCLURE{fond=xml_templates/balises/soustheme}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/sousdossier}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/fiche}{url=#GET{url}} />
+
+    <hr />
+    <INCLURE{fond=xml_templates/balises/serviceenligne}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/ousadresser}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/voiraussi}{url=#GET{url}} />
+  </div>
+
+  <INCLURE{fond=xml_templates/balises/questionreponse}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/pourensavoirplus}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/commentfairesi}{url=#GET{url}} />
+</div>

@@ -1,0 +1,13 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<BOUCLE_introduction(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+  {datapath root/children/introduction/0/children/texte}{datacache #GET{datacache}}>
+  <div class="introduction">
+   <INCLURE{fond=xml_templates/balises/texte}{data=#VALEUR{children}} />
+ </div>
+</BOUCLE_introduction>

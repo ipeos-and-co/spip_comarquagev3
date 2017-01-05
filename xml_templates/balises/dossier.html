@@ -1,0 +1,18 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<B_dossier>
+<ul class="dossier spip">
+<BOUCLE_dossier(DATA){source tableau, #ENV{data}}>
+  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text}</a>
+    <B_theme>
+    <br /><small>
+    <BOUCLE_theme(DATA){source tableau, #VALEUR{children/theme}}{','}>[(#VALEUR{children/titre/0/text})]</BOUCLE_theme>
+    </small>
+    </B_theme>
+  </li>
+</BOUCLE_dossier>
+</ul>
+</B_dossier>

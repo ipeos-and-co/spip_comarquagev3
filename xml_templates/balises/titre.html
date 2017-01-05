@@ -1,0 +1,9 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<BOUCLE_titre(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
+  <h4>[(#CLE|in_array{#LISTE{paragraphe}}|oui)
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{no_html=1} />]</h4>
+</BOUCLE_titre>

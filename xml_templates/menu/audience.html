@@ -1,0 +1,11 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 8640000
+-->]
+[(#SET{datacache, #ENV{datacache, 8640000}})]
+
+<BOUCLE_menu_audience(DATA){source simplexml,#ENV{url}|copie_locale{modif}}
+  {datapath root/children/audience}{datacache #GET{datacache}}>
+  <h3><:comarquage:titre_accueil{type=#VALEUR{text}}:></h3>
+</BOUCLE_menu_audience>

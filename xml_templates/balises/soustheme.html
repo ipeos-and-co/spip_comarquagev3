@@ -1,0 +1,20 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<BOUCLE_soustheme(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+  {datapath root/children/soustheme}{datacache #GET{datacache}}>
+<div class="soustheme">
+  <h3>#VALEUR{children/titre/0/text}</h3>
+  <B_dossier>
+  <ul class="spip">
+  <BOUCLE_dossier(DATA){source tableau, #VALEUR{children/dossier}}>
+    <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
+  </BOUCLE_dossier>
+  </ul>
+  </B_dossier>
+</div>
+</BOUCLE_soustheme>

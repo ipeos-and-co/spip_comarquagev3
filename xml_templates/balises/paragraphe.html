@@ -1,0 +1,16 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+  no_html : Supprime la balise html si présent
+-->]
+
+<BOUCLE_paragraphe(DATA){source tableau, #ENV{data}}>
+[(#ENV{no_html}|non)<p class="paragraphe">]
+  #VALEUR{text}
+
+  <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
+    [(#CLE|in_array{#LISTE{miseenevidence,lienexterne,valeur}}|oui)
+      <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  </BOUCLE_children>
+[(#ENV{no_html}|non)</p>]
+</BOUCLE_paragraphe>

@@ -14,8 +14,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_le' => 'Vérifié le',
 	'ousadresser' => 'Où s\'informer ?',
 	'voiraussi' => 'Et aussi sur service-public.fr',
-	'commentfairesi' => 'Comment faire si…',
-	'tous_commentfairesi' => 'Tous les Comment faire si…',
+	'commentfairesi' => 'Comment faire si...',
+	'tous_commentfairesi' => 'Tous les Comment faire si...',
 	'dernieres_actualites' => 'Dernières actualités',
 	'telecharger_formulaire' => 'Télécharger le formulaire',
 	'explication_pratiques' => 'Pour toute explication, consulter les fiches pratiques :',
@@ -26,6 +26,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'centredecontact' => 'Centre de contact',
 	'prive_visible_public' => 'Les informations de comarquage ne sont pas chargé
 	dans l\'espace d\'administration.',
+	'titre_accueil' => 'Guide des droits et démarches des @type@'
 );
 
 ?>

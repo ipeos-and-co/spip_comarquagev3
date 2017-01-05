@@ -1,0 +1,11 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<BOUCLE_texte(DATA){source tableau, #ENV{data}}>
+  [(#CLE|=={paragraphe}|oui)
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  [(#CLE|in_array{#LISTE{chapitre}}|oui)
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+</BOUCLE_texte>

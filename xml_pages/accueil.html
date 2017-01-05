@@ -1,0 +1,22 @@
+<div class="page-accueil">
+[(#REM) Menu principal]
+<INCLURE{fond=xml_templates/menu, env} />
+
+[(#REM) Services en ligne]
+<INCLURE{fond=xml_templates/servicesenligne, env} />
+
+[(#REM) Questions Réponses]
+<INCLURE{fond=xml_templates/questionsreponses, env} />
+
+[(#REM) Comment faire si ?]
+<INCLURE{fond=xml_templates/commentfairesi, env} />
+
+[(#REM) Centres de contact]
+<INCLURE{fond=xml_templates/centresdecontact, env} />
+
+[(#REM) Actualités :
+Suppression des imges dans les actualités car les règles réseau sur les
+images empêchent le chargement rapide du template. Impossible de faire une
+copie locale à cause des copyrights]
+<INCLURE{fond=xml_templates/actualites, env}{no_image=1} />
+</div>

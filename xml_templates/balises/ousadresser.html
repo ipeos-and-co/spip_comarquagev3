@@ -1,0 +1,22 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_ousadresser>
+<div class="ousadresser panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><:comarquage:ousadresser:></h3>
+  </div>
+  <div class="panel-body">
+    <BOUCLE_ousadresser(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+      {datapath root/children/ousadresser}{datacache #GET{datacache}}>
+      <h3 class="#VALEUR{children/titre/0/name}"><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text}</a></h3>
+      [<p class="text-info"><small class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</small></p>]
+      <INCLURE{fond=xml_templates/balises/texte}{data=#VALEUR{children/texte/0/children}} />
+    </BOUCLE_ousadresser>
+  </div>
+</div>
+</B_ousadresser>

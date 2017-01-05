@@ -1,0 +1,15 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_fildariane>
+<ol class="fildariane breadcrumb">
+<BOUCLE_fildariane(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+  {datapath root/children/fildariane/0/children/niveau}{datacache #GET{datacache}}>
+  <li[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) class="active"]>[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">]#VALEUR{text}[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)</a>]</li>
+</BOUCLE_fildariane>
+</ol>
+</B_fildariane>

@@ -1,0 +1,24 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_pourensavoirplus>
+<div class="pourensavoirplus panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><:comarquage:pour_en_savoir_plus:></h3>
+  </div>
+  <div class="panel-body">
+    <ul class="spip">
+      <BOUCLE_pourensavoirplus(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+        {datapath root/children/pourensavoirplus}{datacache #GET{datacache}}>
+        <li><a href="[(#VALEUR{attributes/url})]" target="_blank">#VALEUR{children/titre/0/text}</a><br />
+          <small>#VALEUR{children/source/0/text}</small>
+        </li>
+      </BOUCLE_pourensavoirplus>
+    </ul>
+  </div>
+</div>
+</B_pourensavoirplus>

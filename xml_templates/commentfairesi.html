@@ -1,0 +1,17 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 864000
+-->]
+[(#SET{datacache, #ENV{datacache, 864000}})]
+[(#SET{url, #ENV{url}commentFaireSi.xml})]
+
+<B_commentfairesi>
+<div class="commentfairesi panel panel-primary">
+<BOUCLE_commentfairesi(DATA){source simplexml,#GET{url}|copie_locale{modif}}
+  {datapath root/children}{datacache #GET{datacache}}>
+  [(#CLE|in_array{#LISTE{fildariane,commentfairesi}}|oui)
+  <INCLURE{fond=xml_templates/commentfairesi/#CLE}{url=#GET{url}} />]
+</BOUCLE_commentfairesi>
+</div>
+</B_commentfairesi>
