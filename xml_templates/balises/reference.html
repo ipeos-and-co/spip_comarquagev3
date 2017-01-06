@@ -1,0 +1,24 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<B_reference>
+<div class="reference panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><:comarquage:reference:></h3>
+  </div>
+  <div class="panel-body">
+    <ul class="spip">
+    <BOUCLE_reference(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+      {datapath root/children/reference}{datacache #GET{datacache}}>
+      <li><a href="[(#VALEUR{attributes/url})]" class="#VALEUR{children/titre/0/name}" target="_blank">#VALEUR{children/titre/0/text}</a>
+        [<br /><small class="[(#VALEUR{children/complement/0/name})]">(#VALEUR{children/complement/0/text})</small>]
+      </li>
+    </BOUCLE_reference>
+    </ul>
+  </div>
+</div>
+</B_reference>

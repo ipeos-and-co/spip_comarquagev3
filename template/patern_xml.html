@@ -5,15 +5,15 @@
 [(#SET{url,[(#GET{categorie}|table_valeur{XMLURL})]})]
 
 [(#GET{inc_xml}|=={accueil}|oui)
-  <INCLURE{fond=xml_pages/accueil, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/accueil}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={noeud}|oui)
-  <INCLURE{fond=xml_pages/noeud, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/noeud}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={fiche}|oui)
-    <INCLURE{fond=template/fiche, env}{xml=#GET{xml}}{url=#GET{url}} />
+    <INCLURE{fond=xml_pages/fiche}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={commentFaireSi}|oui)

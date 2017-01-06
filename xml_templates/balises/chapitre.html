@@ -5,7 +5,7 @@ Variables:
 
 <BOUCLE_chapitre(DATA){source tableau, #ENV{data}}>
 <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-  [(#CLE|in_array{#LISTE{titre,paragraphe}}|oui)
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  [(#CLE|in_array{#LISTE{titre,paragraphe,liste,souschapitre,bloccas,asavoir}}|oui)
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{balise_titre=#ENV{balise_titre,h3}} />]
 </BOUCLE_elements>
 </BOUCLE_chapitre>

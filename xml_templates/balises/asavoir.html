@@ -1,0 +1,14 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<BOUCLE_asavoir(DATA){source tableau, #ENV{data}}>
+<div class="asavoir alert alert-info">
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+  [(#CLE|=={titre}|oui)<h4>#VALEUR{0/text}</h4>]
+  [(#CLE|in_array{#LISTE{paragraphe}}|oui)
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  </BOUCLE_elements>
+</div>
+</BOUCLE_asavoir>

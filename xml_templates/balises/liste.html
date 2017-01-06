@@ -1,0 +1,17 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<BOUCLE_liste(DATA){source tableau, #ENV{data}}>
+[(#VALEUR{attributes/type}|=={puce}|oui)<ul class="liste">]
+<BOUCLE_elements(DATA){source tableau, #VALEUR{children/item}}>
+  <li class="item">
+  <BOUCLE_item_elements(DATA){source tableau, #VALEUR{children}}>
+  [(#CLE|in_array{#LISTE{paragraphe,lienexterne,lieninterne}}|oui)
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{no_html=1} />]
+  </BOUCLE_item_elements>
+  </li>
+</BOUCLE_elements>
+[(#VALEUR{attributes/type}|=={puce}|oui)</ul>]
+</BOUCLE_liste>

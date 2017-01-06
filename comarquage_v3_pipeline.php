@@ -18,7 +18,7 @@ if (!defined("_ECRIRE_INC_VERSION")) {
  * @return string
  */
 function comarquage_v3_insert_head($flux){
-  $flux .= '<script type="text/javascript" src="' . find_in_path('js/comarquage.js') . '"></script>';
+  // $flux .= '<script type="text/javascript" src="' . find_in_path('js/comarquage.js') . '"></script>';
   return $flux;
 }
 
@@ -28,7 +28,7 @@ function comarquage_v3_insert_head($flux){
  * @return string
  */
 function comarquage_v3_insert_head_css($flux) {
-    $flux .= '<link rel="stylesheet" href="' . find_in_path('css/comarquage.css') . '" media="all" />';
+    // $flux .= '<link rel="stylesheet" href="' . find_in_path('css/comarquage.css') . '" media="all" />';
     return $flux;
 }
 ?>

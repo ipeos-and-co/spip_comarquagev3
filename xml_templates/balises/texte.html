@@ -1,11 +1,26 @@
 [(#REM)
 Variables:
   data : Tableau de données listant le contenu
+  url : URL a parser. Est prioritaire sur la variable data
+  datacache : Cache en seconde de la boucle DATA uniquement si url
+    - défaut : 86400
 -->]
+[(#SET{url, #ENV{url,'no-url'}})]
+[(#SET{datacache, #ENV{datacache, 86400}})]
 
-<BOUCLE_texte(DATA){source tableau, #ENV{data}}>
-  [(#CLE|=={paragraphe}|oui)
-  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
-  [(#CLE|in_array{#LISTE{chapitre}}|oui)
-  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
-</BOUCLE_texte>
+<div class="texte">
+<BOUCLE_condition(CONDITION){si #GET{url}|!={'no-url'}}>
+  <BOUCLE_texte_url(DATA){source simplexml, #GET{url}|copie_locale{modif}}
+    {datapath root/children/texte}{datacache #GET{datacache}}>
+    <BOUCLE_texte_url_data(DATA){source tableau, #VALEUR{children}}>
+      [(#CLE|in_array{#LISTE{paragraphe,chapitre,liste,bloccas}}|oui)
+      <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+    </BOUCLE_texte_url_data>
+  </BOUCLE_texte_url>
+</BOUCLE_condition>
+  <BOUCLE_texte(DATA){source tableau, #ENV{data}}>
+    [(#CLE|in_array{#LISTE{paragraphe,chapitre,liste,bloccas,asavoir}}|oui)
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  </BOUCLE_texte>
+<//B_condition>
+</div>

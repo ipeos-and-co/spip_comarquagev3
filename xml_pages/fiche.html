@@ -6,33 +6,27 @@ Variables:
 [(#SET{datacache, #ENV{datacache, 864000}})]
 [(#SET{url, #ENV{url}#ENV{xml}.xml})]
 
-<BOUCLE_noeud(DATA){source simplexml, #GET{url}|copie_locale{modif}}{0,1}
+<BOUCLE_fiche(DATA){source simplexml, #GET{url}|copie_locale{modif}}{0,1}
   {datapath root/children}{datacache #GET{datacache}}>
-<div class="page-noeud">
+<div class="page-fiche">
   <INCLURE{fond=xml_templates/balises/fildariane}{url=#GET{url}} />
   <INCLURE{fond=xml_templates/balises/titre_noeud}{url=#GET{url}} />
+
   <INCLURE{fond=xml_templates/balises/introduction}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/texte}{url=#GET{url}} />
 
   <div class="list">
-    <INCLURE{fond=xml_templates/balises/soustheme}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/sousdossier}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/fiche}{url=#GET{url}} />
-
-    <hr />
-    <INCLURE{fond=xml_templates/balises/serviceenligne}{url=#GET{url}} />
     <INCLURE{fond=xml_templates/balises/ousadresser}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/voiraussi}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/reference}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/serviceenligne}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/questionreponse}{url=#GET{url}} />
   </div>
-
-  <INCLURE{fond=xml_templates/balises/questionreponse}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/pourensavoirplus}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/commentfairesi}{url=#GET{url}} />
 </div>
-</BOUCLE_noeud>
+</BOUCLE_fiche>
 <div class="alert alert-danger text-center">
   <h2 class="comarquage-404-titre"><:comarquage:page_404_titre:></h2>
   <div class="comarquage-404-texte">
     <:comarquage:page_404_texte:>
   </div>
 </div>
-<//B_noeud>
+<//B_fiche>

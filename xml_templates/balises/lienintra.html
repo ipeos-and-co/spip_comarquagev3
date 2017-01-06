@@ -1,0 +1,14 @@
+[(#REM)
+Todo: Faire le lien pointer vers le glossaire de service-public.
+Il faut faire passer l'url du XML et parser les "Definition" pour trouver
+la bonne définition associée.
+
+Variables:
+  data : Contenu a parser
+-->]
+
+<BOUCLE_lienintra(DATA){source tableau, #ENV{data}}>
+[(#REM)
+  <a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/lienid}})]" class="#VALEUR{name}" title="#VALEUR{attributes/type}">#VALEUR{text}</a>]
+  <i class="#VALEUR{name}" title="#VALEUR{attributes/type}">#VALEUR{text}</i>
+</BOUCLE_lienintra>

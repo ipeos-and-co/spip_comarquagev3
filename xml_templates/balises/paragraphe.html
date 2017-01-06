@@ -9,7 +9,7 @@ Variables:
   #VALEUR{text}
 
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
-    [(#CLE|in_array{#LISTE{miseenevidence,lienexterne,valeur}}|oui)
+    [(#CLE|in_array{#LISTE{miseenevidence,lienexterne,lieninterne,lienintra,valeur,exposant}}|oui)
       <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
   </BOUCLE_children>
 [(#ENV{no_html}|non)</p>]

@@ -1,0 +1,8 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<BOUCLE_lieninterne(DATA){source tableau, #ENV{data}}>
+  <a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/lienpublication}})]" class="#VALEUR{name}">#VALEUR{text}</a>
+</BOUCLE_lieninterne>

@@ -26,7 +26,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'centredecontact' => 'Centre de contact',
 	'prive_visible_public' => 'Les informations de comarquage ne sont pas chargé
 	dans l\'espace d\'administration.',
-	'titre_accueil' => 'Guide des droits et démarches des @type@'
+	'titre_accueil' => 'Guide des droits et démarches des @type@',
+	'page_404_titre' => 'Page indisponible',
+	'page_404_texte' => '<p>Désolé, cette page n\'est pas disponible sur
+	service-public.fr</p>
+	<p>Vous pouvez toutefois <a href="#" onclick="window.history.back();">
+	consulter les autres pages</a></p>',
+	'reference' => 'Textes de référence',
 );
 
 ?>
