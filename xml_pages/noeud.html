@@ -1,5 +1,13 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 864000
+-->]
+[(#SET{datacache, #ENV{datacache, 864000}})]
 [(#SET{url, #ENV{url}#ENV{xml}.xml})]
 
+<BOUCLE_noeud(DATA){source simplexml, #GET{url}|copie_locale{modif}}{0,1}
+  {datapath root/children}{datacache #GET{datacache}}>
 <div class="page-noeud">
   <INCLURE{fond=xml_templates/balises/fildariane}{url=#GET{url}} />
   <INCLURE{fond=xml_templates/balises/titre_noeud}{url=#GET{url}} />
@@ -20,3 +28,10 @@
   <INCLURE{fond=xml_templates/balises/pourensavoirplus}{url=#GET{url}} />
   <INCLURE{fond=xml_templates/balises/commentfairesi}{url=#GET{url}} />
 </div>
+</BOUCLE_noeud>
+  <div class="alert alert-danger text-center">
+    <h2>Page indisponible</h2>
+    <p>Désolé, cette page n'est plus disponible sur service-public.fr</p>
+    <p>Vous pouvez toutefois <a href="#" onclick="window.history.back();">consulter les autres pages</a></p>
+  </div>
+<//B_noeud>

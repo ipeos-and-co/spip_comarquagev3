@@ -4,6 +4,7 @@ Variables:
         - défaut : 86400
 -->]
 [(#SET{datacache, #ENV{datacache, 86400}})]
+[(#SET{base_url, #ENV{url}})]
 [(#SET{url, #ENV{url}menu.xml})]
 
 <B_menu>
@@ -11,7 +12,7 @@ Variables:
 <BOUCLE_menu(DATA){source simplexml,#GET{url}|copie_locale{modif}}
   {datapath root/children}{datacache #GET{datacache}}>
   [(#CLE|in_array{#LISTE{audience,item}}|oui)
-  <INCLURE{fond=xml_templates/menu/#CLE}{url=#GET{url}} />]
+  <INCLURE{fond=xml_templates/menu/#CLE}{url=#GET{url}}{base_url=#GET{base_url}} />]
 </BOUCLE_menu>
 </div>
 </B_menu>
