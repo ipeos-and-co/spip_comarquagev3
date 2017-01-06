@@ -1,0 +1,27 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 864000
+-->]
+[(#SET{datacache, #ENV{datacache, 864000}})]
+[(#SET{url, #ENV{url}#ENV{xml}.xml})]
+
+<BOUCLE_ressource(DATA){source simplexml, #GET{url}|copie_locale{modif}}{0,1}
+  {datapath root/children}{datacache #GET{datacache}}>
+<div class="page-ressource">
+  <INCLURE{fond=xml_templates/balises/fildariane}{url=#GET{url}} />
+  <INCLURE{fond=xml_templates/balises/titre_page}{url=#GET{url}} />
+
+  <div class="ressource-content well">
+    <INCLURE{fond=xml_templates/balises/numerocerfa}{url=#GET{url}} />
+
+    <INCLURE{fond=xml_templates/balises/introduction}{url=#GET{url}} />
+    <INCLURE{fond=xml_templates/balises/texte}{url=#GET{url}} />
+
+    <div class="text-center">
+      <INCLURE{fond=xml_templates/balises/lienweb}{url=#GET{url}} />
+    </div>
+    <INCLURE{fond=xml_templates/balises/noticeliee}{url=#GET{url}} />
+  </div>
+</div>
+</BOUCLE_ressource>

@@ -16,12 +16,12 @@
     <INCLURE{fond=xml_pages/fiche}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
-[(#GET{inc_xml}|=={commentFaireSi}|oui)
-    <INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}} />
+[(#GET{inc_xml}|=={ressources}|oui)
+    <INCLURE{fond=xml_pages/ressources}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
-[(#GET{inc_xml}|=={ressources}|oui)
-    <INCLURE{fond=template/ressources, env}{xml=#GET{xml}}{url=#GET{url}} />
+[(#GET{inc_xml}|=={commentFaireSi}|oui)
+    <INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={questionsReponses}|oui)

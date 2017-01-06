@@ -1,0 +1,11 @@
+[(#REM)
+Variables:
+  datacache : Cache en seconde de la boucle DATA
+    - défaut : 86400
+-->]
+[(#SET{datacache, #ENV{datacache, 86400}})]
+
+<BOUCLE_numerocerfa(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
+  {datapath root/children/numerocerfa}{datacache #GET{datacache}}>
+  <div class="numerocerfa"><h3>Cerfa #VALEUR{text}</h3></div>
+</BOUCLE_numerocerfa>
