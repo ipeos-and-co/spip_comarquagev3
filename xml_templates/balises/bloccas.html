@@ -2,11 +2,12 @@
 Variables:
   data : Tableau de données listant le contenu
 -->]
+[(#SET{token, #REM|comarquage_token})]
 
 <BOUCLE_bloccas(DATA){source tableau, #ENV{data}}>
-<div class="xml-bloccas">
+<div class="xml-bloccas panel-group" id="bloccas-[(#GET{token})]">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{token=#GET{token}} />
   </BOUCLE_elements>
 </div>
 </BOUCLE_bloccas>

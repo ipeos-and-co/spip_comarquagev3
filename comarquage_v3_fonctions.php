@@ -210,6 +210,13 @@ function media_local($id){
 }
 
 /**
+ * Identifiant unique utile pour générer des ID unique
+ */
+function comarquage_token() {
+  return substr(md5(rand(0,1000000) . 'comarquage'), 0, 6);
+}
+
+/**
  * Transforme un texte XML en tableau PHP
  *
  * @param string|object $u
