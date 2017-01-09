@@ -1,5 +1,3 @@
 - gestion des pivots
 - moteur de recherche
 - prendre en charge les redirections (redirect.xml)
-- résoudre l'affichage des mini bloque dans les fiches (service en ligne, ousadresser ...)(ref: F1122.xml/ asso).
-- Gérer un 404

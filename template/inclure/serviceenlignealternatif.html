@@ -1,9 +1,0 @@
-#CACHE{3*24*3600}
-<B_element>
-<p class="spip">
-  <:comarquage:aussi_utiliser:><br />
-  <BOUCLE_element(DATA){source table, #ENV{table}}>
-    [<:comarquage:service_ligne:> <a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{children/titre/0/text}</a>]
-  </BOUCLE_element>
-</p>
-</B_element>

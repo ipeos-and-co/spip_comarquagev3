@@ -1,6 +1,0 @@
-#CACHE{3*24*3600}
-[(#REM) sous dossier]
-<BOUCLE_sousdossier(DATA){source tableau, #ENV{table}}>
-    [<h4>(#VALEUR{children/titre/0/text})</h4>]
-    <INCLURE{fond=template/inclure/fiche, env}{table=#VALEUR{children/fiche}} />
-</BOUCLE_sousdossier>

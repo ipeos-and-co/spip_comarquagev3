@@ -1,9 +1,0 @@
-#CACHE{3*24*3600}
-<B_element>
-<p class="#ENV{table}|table_valeur{0/name}">
-    <:comarquage:aider_remplir_form:><br />
-    <BOUCLE_element(DATA){source tableau, #ENV{table}}>
-      [<a href="(#VALEUR{attributes/url})" target="_blank">#VALEUR{text}</a>]
-    </BOUCLE_element>
-</p>
-</B_element>
