@@ -6,7 +6,12 @@ Variables:
 <B_fildariane>
 <ol class="xml-fildariane breadcrumb">
 <BOUCLE_fildariane(DATA){source tableau, #ENV{data}|table_valeur{0/children/niveau}}>
-  <li[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) class="active"]>[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">]#VALEUR{text}[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)</a>]</li>
+  <li[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui) class="active"]>
+    [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)
+      [(#COMPTEUR_BOUCLE|=={1}|oui)<a href="[(#SELF|parametre_url{xml,''})]">]
+      [(#COMPTEUR_BOUCLE|=={1}|non)<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">]]
+      #VALEUR{text}
+    [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|non)</a>]</li>
 </BOUCLE_fildariane>
 </ol>
 </B_fildariane>

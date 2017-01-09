@@ -1,0 +1,23 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
+-->]
+
+<B_contact>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-contact panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:centredecontact:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-contact">
+<BOUCLE_contact(DATA){source tableau, #ENV{data}}>
+  <li>#VALEUR{children/titre/0/text}</li>
+</BOUCLE_contact>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
+  </div>
+</div>]
+</B_contact>

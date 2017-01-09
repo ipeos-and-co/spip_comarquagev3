@@ -13,25 +13,25 @@
 ]
 
 [(#GET{inc_xml}|=={fiche}|oui)
-    <INCLURE{fond=xml_pages/fiche}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/fiche}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={ressources}|oui)
-    <INCLURE{fond=xml_pages/ressource}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/ressource}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={commentFaireSi}|oui)
-    <INCLURE{fond=template/commentfairesi, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/commentfairesi}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={questionsReponses}|oui)
-    <INCLURE{fond=template/questionsreponses, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/questionsreponses, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={servicesEnLigne}|oui)
-    <INCLURE{fond=template/servicesenligne, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/servicesenligne, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
 
 [(#GET{inc_xml}|=={centresDeContact}|oui)
-    <INCLURE{fond=template/centresdecontact, env}{xml=#GET{xml}}{url=#GET{url}} />
+  <INCLURE{fond=xml_pages/centresdecontact, env}{xml=#GET{xml}}{url=#GET{url}} />
 ]
