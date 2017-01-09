@@ -1,0 +1,14 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<BOUCLE_dossier(DATA){source tableau, #ENV{data}}>
+<div class="xml-dossier">
+  <p>
+    <a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text}</a>
+    [<br /><small><a href="[(#SELF|parametre_url{xml,#VALEUR{children/theme/0/attributes/id}})]">
+      (#VALEUR{children/theme/0/children/titre/0/text})</a></small>]
+  </p>
+</div>
+</BOUCLE_dossier>

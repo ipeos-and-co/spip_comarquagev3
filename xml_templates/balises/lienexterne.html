@@ -1,0 +1,8 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<BOUCLE_lienexterne(DATA){source tableau, #ENV{data}}>
+  <a href="#VALEUR{attributes/url}" class="xml-lienexterne">[(#VALEUR{text}) ]<i class="fa fa-external-link"></i></a>
+</BOUCLE_lienexterne>

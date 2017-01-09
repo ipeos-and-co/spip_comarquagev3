@@ -3,15 +3,26 @@ TODO: Gérer le pivotlocal
 
 Variables:
   data : Tableau de données listant le contenu
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
 -->]
 <B_ousadresser>
-<div class="xml-ousadresser">
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-ousadresser panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:ousadresser:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-ousadresser">
 <BOUCLE_ousadresser(DATA){source tableau, #ENV{data}}>
-  <p><strong>
+  <li><strong>
     <a href="#VALEUR{children/ressourceweb/0/attributes/url}" target="_blank">[(#VALEUR{children/titre/0/text}) ]<i class="fa fa-external-link"></i></a></strong>
     [<br />(#VALEUR{children/complement/0/text})]
     [<br /><small><i>(#VALEUR{children/source/0/text})</i></small>]
-  </p>
+  </li>
 </BOUCLE_ousadresser>
-</div>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
+  </div>
+</div>]
 </B_ousadresser>

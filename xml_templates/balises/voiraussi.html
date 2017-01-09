@@ -1,0 +1,21 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
+-->]
+
+<B_voiraussi>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-voiraussi panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:voiraussi:></h3>
+    </div>
+    <div class="panel-body">]
+<BOUCLE_voiraussi(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+</BOUCLE_voiraussi>
+[(#ENV{bloc}|!={non}|oui)
+  </div>
+</div>]
+</B_voiraussi>

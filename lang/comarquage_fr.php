@@ -33,6 +33,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	<p>Vous pouvez toutefois <a href="#" onclick="window.history.back();">
 	consulter les autres pages</a></p>',
 	'reference' => 'Textes de référence',
+	'ficheliees' => 'Fiches associées'
 );
 
 ?>

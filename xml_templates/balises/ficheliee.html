@@ -1,0 +1,31 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
+-->]
+
+<B_ficheliee>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-ficheliee panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:ficheliees:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-ficheliee">
+<BOUCLE_ficheliee(DATA){source tableau, #ENV{data}}>
+  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text} </a>
+    [<br /><small><i>(#VALEUR{attributes/audience})</i></small>]</li>
+  <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
+    <BOUCLE_condition(CONDITION){si #CLE|!={titre}}>
+      <BOUCLE_elements(DATA){source tableau, #VALEUR}>
+      <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text} </a></li>
+      </BOUCLE_elements>
+    </BOUCLE_condition>
+  </BOUCLE_children>
+</BOUCLE_ficheliee>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
+  </div>
+</div>]
+</B_ficheliee>

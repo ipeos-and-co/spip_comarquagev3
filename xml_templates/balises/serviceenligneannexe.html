@@ -1,0 +1,28 @@
+[(#REM)
+TODO: Gestion de PivotLocal
+
+Variables:
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
+-->]
+
+<B_serviceenligneannexe>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-serviceenligneannexe panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:services_en_ligne:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-serviceenligneannexe">
+<BOUCLE_serviceenligneannexe(DATA){source tableau, #ENV{data}}>
+  <li>
+    <a href="#VALEUR{children/lienweb/0/attributes/url}" target="_blank">
+      [(#VALEUR{children/titre/0/text}) ]<i class="fa fa-external-link"></i></a>
+  </li>
+</BOUCLE_serviceenligneannexe>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
+  </div>
+</div>]
+</B_serviceenligneannexe>

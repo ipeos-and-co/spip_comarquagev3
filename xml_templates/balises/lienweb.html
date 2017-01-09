@@ -1,0 +1,13 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<BOUCLE_lienweb(DATA){source tableau, #ENV{data}}>
+<div class="well text-center">
+  <a href="#VALEUR{attributes/url}" target="_blank" class="lienweb btn btn-primary">
+    <:comarquage:telecharger_formulaire:> <i class="fa fa-external-link"></i>
+  </a>
+  [<br /><small>(#VALEUR{children/source/0/text})</small>]
+</div>
+</BOUCLE_lienweb>

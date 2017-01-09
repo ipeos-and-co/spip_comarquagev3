@@ -1,0 +1,19 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+
+<B_noticeliee>
+<div class="xml-noticesliees panel panel-info">
+  <div class="panel-heading">
+    <h4 class="panel-title"><:comarquage:aider_remplir_form:></h4>
+  </div>
+  <div class="panel-body">
+  <BOUCLE_noticeliee(DATA){source tableau, #ENV{data}}>
+  <p class="#VALEUR{name}">
+    <a href="#VALEUR{attributes/url}" target="_blank">#VALEUR{text} <i class="fa fa-external-link"></i></a>
+  </p>
+  </BOUCLE_noticeliee>
+  </div>
+</div>
+</B_noticeliee>
