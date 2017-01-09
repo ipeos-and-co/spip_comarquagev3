@@ -1,25 +1,12 @@
 [(#REM)
 Variables:
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
+  data : Contenu a parser
 -->]
-[(#SET{datacache, #ENV{datacache, 86400}})]
 
 <B_commentfairesi>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><:comarquage:commentfairesi:></h3>
-  </div>
-  <div class="panel-body">
-    <ul class="commentfairesi spip">
-    <BOUCLE_commentfairesi(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-      {datapath root/children/commentfairesi}{datacache #GET{datacache}}>
-      <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
-    </BOUCLE_commentfairesi>
-    </ul>
-  </div>
-  <div class="panel-footer">
-    [<a href="(#SELF|parametre_url{xml,commentFaireSi})" class="btn btn-default btn-small"><:comarquage:tous_commentfairesi:></a>]
-  </div>
-</div>
+<ul class="xml-commentfairesi">
+<BOUCLE_commentfairesi(DATA){source tableau, #ENV{data}}>
+  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
+</BOUCLE_commentfairesi>
+</ul>
 </B_commentfairesi>

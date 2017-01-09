@@ -1,13 +1,13 @@
 [(#REM)
 Variables:
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
+  data : Contenu a parser
 -->]
-[(#SET{datacache, #ENV{datacache, 86400}})]
 
-<BOUCLE_introduction(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-  {datapath root/children/introduction/0/children/texte}{datacache #GET{datacache}}>
-  <div class="introduction">
-   <INCLURE{fond=xml_templates/balises/texte}{data=#VALEUR{children}} />
- </div>
+<B_introduction>
+<div class="xml-introduction lead">
+<BOUCLE_introduction(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+</div>
 </BOUCLE_introduction>
+</div>
+</B_introduction>

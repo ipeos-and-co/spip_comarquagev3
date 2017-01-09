@@ -4,24 +4,9 @@ Variables:
 -->]
 
 <BOUCLE_bloccas(DATA){source tableau, #ENV{data}}>
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <BOUCLE_cas(DATA){source tableau, #VALEUR{children/cas}}>
-  <div class="[(#VALEUR{name}) ]panel panel-default">
-    <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-      [(#CLE|=={titre}|oui)
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <INCLURE{fond=xml_templates/balises/paragraphe}{data=#VALEUR{0/children/paragraphe}}{no_html=1} />
-        </h3>
-      </div>]
-      [(#COMPTEUR_BOUCLE|=={1}|oui)<div class="panel-body">]
-
-      [(#CLE|in_array{#LISTE{paragraphe,ousadresser}}|oui)
-        <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
-
-      [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)</div>]
-    </BOUCLE_elements>
-  </div>
-  </BOUCLE_cas>
+<div class="xml-bloccas">
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+  </BOUCLE_elements>
 </div>
 </BOUCLE_bloccas>

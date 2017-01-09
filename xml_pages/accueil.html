@@ -1,22 +1,18 @@
+[(#REM)
+Variables:
+    datacache : Cache en seconde de la boucle DATA
+        - défaut : 864000
+-->]
+[(#SET{datacache, #ENV{datacache, 864000}})]
+[(#SET{url, #ENV{url}#ENV{xml}.xml})]
+
+<B_accueil>
 <div class="page-accueil">
-[(#REM) Menu principal]
-<INCLURE{fond=xml_templates/menu, env} />
-
-[(#REM) Services en ligne]
-<INCLURE{fond=xml_templates/servicesenligne, env} />
-
-[(#REM) Questions Réponses]
-<INCLURE{fond=xml_templates/questionsreponses, env} />
-
-[(#REM) Comment faire si ?]
-<INCLURE{fond=xml_templates/commentfairesi, env} />
-
-[(#REM) Centres de contact]
-<INCLURE{fond=xml_templates/centresdecontact, env} />
-
-[(#REM) Actualités :
-Suppression des imges dans les actualités car les règles réseau sur les
-images empêchent le chargement rapide du template. Impossible de faire une
-copie locale à cause des copyrights]
-<INCLURE{fond=xml_templates/actualites, env}{no_image=1} />
+  [(#REM) Menu principal]
+  <INCLURE{fond=xml_templates/menu}{base_url=#ENV{url}} />
+<BOUCLE_accueil(DATA){source simplexml, #GET{url}|copie_locale{modif}}
+  {datapath root/children}{datacache #GET{datacache}}>
+  <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}}{data=#VALEUR} />
+</BOUCLE_accueil>
 </div>
+</B_accueil>

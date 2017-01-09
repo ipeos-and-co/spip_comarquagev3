@@ -6,29 +6,14 @@ Variables:
 [(#SET{datacache, #ENV{datacache, 864000}})]
 [(#SET{url, #ENV{url}#ENV{xml}.xml})]
 
-<BOUCLE_noeud(DATA){source simplexml, #GET{url}|copie_locale{modif}}{0,1}
-  {datapath root/children}{datacache #GET{datacache}}>
+<B_noeud>
 <div class="page-noeud">
-  <INCLURE{fond=xml_templates/balises/fildariane}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/titre_page}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/introduction}{url=#GET{url}} />
-
-  <div class="list">
-    <INCLURE{fond=xml_templates/balises/soustheme}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/sousdossier}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/fiche}{url=#GET{url}} />
-
-    <hr />
-    <INCLURE{fond=xml_templates/balises/serviceenligne}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/ousadresser}{url=#GET{url}} />
-    <INCLURE{fond=xml_templates/balises/voiraussi}{url=#GET{url}} />
-  </div>
-
-  <INCLURE{fond=xml_templates/balises/questionreponse}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/pourensavoirplus}{url=#GET{url}} />
-  <INCLURE{fond=xml_templates/balises/commentfairesi}{url=#GET{url}} />
-</div>
+<BOUCLE_noeud(DATA){source simplexml, #GET{url}|copie_locale{modif}, namespace}
+  {datapath root/children}{datacache #GET{datacache}}>
+  <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}}{data=#VALEUR} />
 </BOUCLE_noeud>
+</div>
+</B_noeud>
 <div class="alert alert-danger text-center">
   <h2 class="comarquage-404-titre"><:comarquage:page_404_titre:></h2>
   <div class="comarquage-404-texte">

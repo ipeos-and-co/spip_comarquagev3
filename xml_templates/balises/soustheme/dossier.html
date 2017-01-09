@@ -1,8 +1,0 @@
-[(#REM)
-Variables:
-    data : Tableau de données listant le contenu
--->]
-
-<BOUCLE_dossier(DATA){source tableau, #ENV{data}}>
-  <li><a href="(#SELF|parametre_url{xml,#VALEUR{attributes/id}})">#VALEUR{text}</a></li>
-</BOUCLE_dossier>

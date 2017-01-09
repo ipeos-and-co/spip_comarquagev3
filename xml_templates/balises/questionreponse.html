@@ -1,22 +1,23 @@
 [(#REM)
 Variables:
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
 -->]
-[(#SET{datacache, #ENV{datacache, 86400}})]
 
 <B_questionreponse>
-<div class="questionreponse panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title"><:comarquage:questionreponses:></h3>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-questionreponse panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:questionreponses:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-questionreponse">
+<BOUCLE_questionreponse(DATA){source tableau, #ENV{data}}>
+  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
+</BOUCLE_questionreponse>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
   </div>
-  <div class="panel-body">
-    <ul class="spip">
-    <BOUCLE_questionreponse(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-      {datapath root/children/questionreponse}{datacache #GET{datacache}}>
-        <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
-    </BOUCLE_questionreponse>
-    </ul>
-  </div>
-</div>
+</div>]
 </B_questionreponse>

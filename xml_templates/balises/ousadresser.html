@@ -1,40 +1,17 @@
 [(#REM)
-Variables:
-  data: uniquement pour la version balise pur dans les BlocCas
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
--->]
-[(#SET{url,#ENV{url,no-url}})]
-[(#SET{datacache, #ENV{datacache, 86400}})]
+TODO: Gérer le pivotlocal
 
-<BOUCLE_condition(CONDITION){si #GET{url}|!={no-url}}>
-  <B_ousadresser>
-  <div class="ousadresser panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><:comarquage:ousadresser:></h3>
-    </div>
-    <div class="panel-body">
-      <ul class="spip">
-      <BOUCLE_ousadresser(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-        {datapath root/children/ousadresser}{datacache #GET{datacache}}>
-        <li>
-          <p class="#VALEUR{children/titre/0/name}"><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text}</a>
-          [<br /><small class="#VALEUR{children/source/0/name}">(#VALEUR{children/source/0/text})</small>]</p>
-          <INCLURE{fond=xml_templates/balises/texte}{data=#VALEUR{children/texte/0/children}} />
-        </li>
-      </BOUCLE_ousadresser>
-      </ul>
-    </div>
-  </div>
-  </B_ousadresser>
-</BOUCLE_condition>
-  <B_balise_ousadresser>
-  <div class="ousadresser">
-    <BOUCLE_balise_ousadresser(DATA){source tableau, #ENV{data}}>
-      <p><a href="#VALEUR{children/ressourceweb/attributes/url}" target="_blank">
-        #VALEUR{children/titre/0/text}
-      </a></p>
-    </BOUCLE_balise_ousadresser>
-  </div>
-  </B_balise_ousadresser>
-<//B_condition>
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+<B_ousadresser>
+<div class="xml-ousadresser">
+<BOUCLE_ousadresser(DATA){source tableau, #ENV{data}}>
+  <p><strong>
+    <a href="#VALEUR{children/ressourceweb/0/attributes/url}" target="_blank">[(#VALEUR{children/titre/0/text}) ]<i class="fa fa-external-link"></i></a></strong>
+    [<br />(#VALEUR{children/complement/0/text})]
+    [<br /><small><i>(#VALEUR{children/source/0/text})</i></small>]
+  </p>
+</BOUCLE_ousadresser>
+</div>
+</B_ousadresser>

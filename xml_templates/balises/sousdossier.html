@@ -1,16 +1,13 @@
 [(#REM)
 Variables:
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
+  data : Contenu a parser
 -->]
-[(#SET{datacache, #ENV{datacache, 86400}})]
 
-<BOUCLE_sousdossier(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-  {datapath root/children/sousdossier}{datacache #GET{datacache}}>
-<div class="sousdossier">
+<BOUCLE_sousdossier(DATA){source tableau, #ENV{data}}>
+<div class="xml-sousdossier">
   <h3>#VALEUR{children/titre/0/text}</h3>
   <B_fiche>
-  <ul class="spip">
+  <ul class="xml-fiche">
   <BOUCLE_fiche(DATA){source tableau, #VALEUR{children/fiche}}>
     <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text}</a></li>
   </BOUCLE_fiche>

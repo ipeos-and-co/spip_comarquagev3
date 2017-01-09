@@ -3,11 +3,11 @@ Variables:
   data : Tableau de données listant le contenu
 -->]
 
-<BOUCLE_souschapitre(DATA){source tableau, #ENV{data}}>
-<div class="xml-souschapitre">
+<BOUCLE_cas(DATA){source tableau, #ENV{data}}>
+<div class="xml-cas">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     [(#CLE|=={titre}|oui)<h4>#VALEUR{0/children/paragraphe/0/text}</h4>]
     [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
   </BOUCLE_elements>
 </div>
-</BOUCLE_souschapitre>
+</BOUCLE_cas>

@@ -4,8 +4,10 @@ Variables:
 -->]
 
 <BOUCLE_chapitre(DATA){source tableau, #ENV{data}}>
-<BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-  [(#CLE|in_array{#LISTE{titre,paragraphe,liste,souschapitre,bloccas,asavoir}}|oui)
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{balise_titre=#ENV{balise_titre,h3}} />]
-</BOUCLE_elements>
+<div class="xml-chapitre">
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+    [(#CLE|=={titre}|oui)<h3>#VALEUR{0/children/paragraphe/0/text}</h3>]
+    [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+  </BOUCLE_elements>
+</div>
 </BOUCLE_chapitre>

@@ -1,24 +1,30 @@
 [(#REM)
+TODO: Gestion de PivotLocal
+
 Variables:
-  datacache : Cache en seconde de la boucle DATA
-    - défaut : 86400
+  data : Contenu a parser
+  bloc : Affiche le resultat dans un bloc avec un titre
+    - utilisation : mettre 'non' pour ne pas afficher le bloc
 -->]
-[(#SET{datacache, #ENV{datacache, 86400}})]
 
 <B_serviceenligne>
-<div class="serviceenligne panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><:comarquage:services_en_ligne:></h3>
+[(#ENV{bloc}|!={non}|oui)
+<div class="xml-bloc-serviceenligne panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><:comarquage:services_en_ligne:></h3>
+    </div>
+    <div class="panel-body">]
+<ul class="xml-serviceenligne">
+<BOUCLE_serviceenligne(DATA){source tableau, #ENV{data}}>
+  <li>
+    [(#VALEUR{attributes/url}|oui)<a href="#VALEUR{attributes/url}" target="_blank">]
+    [(#VALEUR{attributes/url}|non)<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">]
+      #VALEUR{children/titre/0/text} [(#VALEUR{attributes/url}|oui)<i class="fa fa-external-link"></i>]</a><br />
+    <small class="xml-serviceenligne-source"><i>#VALEUR{children/source/0/text}</i></small>
+  </li>
+</BOUCLE_serviceenligne>
+</ul>
+[(#ENV{bloc}|!={non}|oui)
   </div>
-  <div class="panel-body">
-    <ul class="spip">
-    <BOUCLE_serviceenligne(DATA){source simplexml, #ENV{url}|copie_locale{modif}}
-      {datapath root/children/serviceenligne}{datacache #GET{datacache}}>
-      <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text}</a><br />
-        <small>#VALEUR{attributes/type}</small>
-      </li>
-    </BOUCLE_serviceenligne>
-    </ul>
-  </div>
-</div>
+</div>]
 </B_serviceenligne>
