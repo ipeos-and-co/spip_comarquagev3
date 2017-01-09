@@ -13,7 +13,7 @@
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{categorie,#GET{categorie}}}}
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{xml,#GET{xml}}}}
 
-<INCLURE{fond=template/patern_xml, env, parametres=#GET{parametres}}/>
+<INCLURE{fond=xml_templates/patern_xml, env, parametres=#GET{parametres}}/>
 </BOUCLE_masque_prive>
 <div class="formulaire_spip comarquage-prive-info">
   <h3 class="titrem">#ENV{categorie}</h3>
