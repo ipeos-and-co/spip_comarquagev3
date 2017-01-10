@@ -1,0 +1,14 @@
+[(#REM)
+Variables:
+  data : rangee de données listant le contenu
+-->]
+
+<BOUCLE_rangee(DATA){source tableau, #ENV{data}}>
+<tr class="xml-rangee">
+  [(#VALEUR{attributes/type}|=={header}|oui)#SET{tag,th}]
+  [(#VALEUR{attributes/type}|=={header}|non)#SET{tag,td}]
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{balise_tag=#GET{tag}} />
+  </BOUCLE_elements>
+</tr>
+</BOUCLE_rangee>

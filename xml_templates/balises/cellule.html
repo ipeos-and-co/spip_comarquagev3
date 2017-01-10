@@ -1,0 +1,15 @@
+[(#REM)
+Variables:
+  data : cellule de données listant le contenu
+  balise_tag : html tag utilisé pour les cellules
+    - defaut : td
+-->]
+[(#SET{tag, #ENV{balise_tag,td}})]
+
+<BOUCLE_cellule(DATA){source tableau, #ENV{data}}>
+<[(#GET{tag}) ]class="xml-cellule"[ (#VALEUR{attributes/fusionverticale}|oui)rowspan="#VALEUR{attributes/fusionverticale}"][ (#VALEUR{attributes/fusionhorizontale}|oui)colspan="#VALEUR{attributes/fusionhorizontale}"]>
+<BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+</BOUCLE_elements>
+</[(#GET{tag})]>
+</BOUCLE_cellule>
