@@ -223,7 +223,7 @@ function comarquage_token() {
  * @param bool $utiliser_namespace
  * @return array
  */
-function inc_domdocument_to_array($u, $utiliser_namespace = false) {
+function inc_comarquagexml_to_array($u, $utiliser_namespace = false) {
     $d = New DOMDocument();
     $d->loadXML($u);
 
@@ -253,93 +253,89 @@ function inc_domdocument_to_array($u, $utiliser_namespace = false) {
         }
     }
 
-    // noeud_structure_xml($d);
-    // schema de parcours
-    // structure();
     $u = $d->saveXML();
 
     if (is_string($u)) {
-		$u = simplexml_load_string($u);
-	}
+  		$u = simplexml_load_string($u);
+  	}
 	return array('root' => @fluxXmlObjToArr($u, $utiliser_namespace));
 }
 
 /**
- * Transforme un objet SimpleXML en flux de tableau PHP
- * http://www.php.net/manual/pt_BR/book.simplexml.php#108688
- * xaviered at gmail dot com 17-May-2012 07:00
+ * Reprise de la fonction de SPIP pour fonctionner avec SimpleXMLElement
+ * https://core.spip.net/projects/spip/repository/entry/spip/ecrire/iterateur/data.php#L832
  *
  * @param object $obj
  * @param bool $utiliser_namespace
  * @return array
  **/
-function fluxXmlObjToArr($obj, $utiliser_namespace = false) {
-	$tableau = array();
-	// Cette fonction getDocNamespaces() est longue sur de gros xml. On permet donc
-	// de l'activer ou pas suivant le contenu supposé du XML
-	if (is_object($obj)) {
-		if (is_array($utiliser_namespace)) {
-			$namespace = $utiliser_namespace;
-		} else {
-			if ($utiliser_namespace) {
-				$namespace = $obj->getDocNamespaces(true);
-			}
-			$namespace[null] = null;
-		}
 
-		$name = strtolower((string)$obj->getName());
-		$text = trim((string)$obj);
-		if (strlen($text) <= 0) {
-			$text = null;
-		}
+function fluxXmlObjToArr($obj, $utiliser_namespace = false, $parentName = '') {
 
-		$children = array();
-		$attributes = array();
+    $tableau = array();
 
-		// get info for all namespaces
-		foreach ($namespace as $ns => $nsUrl) {
-			// attributes
-			$objAttributes = $obj->attributes($ns, true);
-			foreach ($objAttributes as $attributeName => $attributeValue) {
-				$attribName = strtolower(trim((string)$attributeName));
-				$attribVal = trim((string)$attributeValue);
-				if (!empty($ns)) {
-					$attribName = $ns . ':' . $attribName;
-				}
-				$attributes[$attribName] = $attribVal;
-			}
+    // Cette fonction getDocNamespaces() est longue sur de gros xml. On permet donc
+    // de l'activer ou pas suivant le contenu supposé du XML
+    if (is_object($obj)) {
+        if (is_array($utiliser_namespace)) {
+            $namespace = $utiliser_namespace;
+        } else {
+            if ($utiliser_namespace) {
+                    $namespace = $obj->getDocNamespaces(true);
+            }
+            $namespace[null] = null;
+        }
 
-			// children
-			$objChildren = $obj->children($ns, true);
-      $cpt = -1;
-			foreach ($objChildren as $childName => $child) {
-				$childName = strtolower((string)$childName);
-        // n'est pas utiliser
-				if (!empty($ns)) {
-					$childName = $ns . ':' . $childName;
-				}
-        $cpt++;
-        // Rendre certain noeud en mode flux
-        // $children[$childName][] = fluxXmlObjToArr($child, $namespace);
-        $children[$cpt][] = fluxXmlObjToArr($child, $namespace);
-			}
-		}
+        $name = strtolower((string)$obj->getName());
+        $text = trim((string)$obj);
+        if (strlen($text) <= 0) {
+                $text = null;
+        }
 
-		$tableau = array(
-			'name' => $name,
-		);
-		if ($text) {
-			$tableau['text'] = $text;
-		}
-		if ($attributes) {
-			$tableau['attributes'] = $attributes;
-		}
-		if ($children) {
-			$tableau['children'] = $children;
-		}
-	}
+        $children = array();
+        $attributes = array();
 
-	return $tableau;
+        // get info for all namespaces
+        foreach ($namespace as $ns => $nsUrl) {
+            // attributes
+            $objAttributes = $obj->attributes($ns, true);
+            foreach ($objAttributes as $attributeName => $attributeValue) {
+                $attribName = strtolower(trim((string)$attributeName));
+                $attribVal = trim((string)$attributeValue);
+                if (!empty($ns)) {
+                    $attribName = $ns . ':' . $attribName;
+                }
+                $attributes[$attribName] = $attribVal;
+            }
+
+            // children
+            $objChildren = $obj->children($ns, true);
+            foreach ($objChildren as $childName => $child) {
+                $childName = strtolower((string)$childName);
+                if (!empty($ns)) {
+                    $childName = $ns . ':' . $childName;
+                }
+                if($parentName == 'paragraphe'){
+                  $children[][$childName][] = fluxXmlObjToArr($child, $namespace, $childName);
+                } else {
+                  $children[$childName][] = fluxXmlObjToArr($child, $namespace, $childName);
+                }
+            }
+        }
+
+        $tableau = array(
+            'name' => $name,
+        );
+        if ($text) {
+            $tableau['text'] = $text;
+        }
+        if ($attributes) {
+            $tableau['attributes'] = $attributes;
+        }
+        if ($children) {
+            $tableau['children'] = $children;
+        }
+    }
+
+    return $tableau;
 }
-
-?>

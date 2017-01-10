@@ -11,7 +11,12 @@ Variables:
   <div class="panel-body">]
 <ul class="xml-fiche">
 <BOUCLE_fiche(DATA){source tableau, #ENV{data}}>
-  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{text} </a></li>
+  <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">
+    [(#VALEUR{text}|oui)#VALEUR{text}]
+    [(#VALEUR{text}|non)#VALEUR{children/titre/0/text}]
+    </a>
+    [<br /><small><a href="[(#SELF|parametres_url{xml,#VALEUR{children/theme/0/attributes/id}})]">(#VALEUR{children/theme/0/children/titre/0/text})</a></small>]
+  </li>
 </BOUCLE_fiche>
 </ul>
 [(#ENV{bloc}|!={non}|oui)

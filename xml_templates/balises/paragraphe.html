@@ -8,7 +8,9 @@ Variables:
 [(#ENV{no_html}|non)<p class="xml-paragraphe">]#VALEUR{text}
 
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
+    <BOUCLE_elements(DATA){source tableau, #VALEUR}>
     <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+    </BOUCLE_elements>
   </BOUCLE_children>
 [(#ENV{no_html}|non)</p>]
 </BOUCLE_paragraphe>

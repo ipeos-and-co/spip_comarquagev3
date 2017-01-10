@@ -9,10 +9,11 @@
     <nom>Comarquage Flux v3</nom>
     <auteur>IPEOS I-Solutions</auteur>
     <auteur>Mickaël Hippocrate</auteur>
+    <auteur>Laurent Vergerolle</auteur>
     <credit lien="http://www.ipeos.com">IPEOS I-Solutions</credit>
     <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
 
-    <pipeline nom="insert_head" inclure="comarquage_v3_pipeline.php"/>
-    <pipeline nom="insert_head_css" inclure="comarquage_v3_pipeline.php"/>
+    <!-- <pipeline nom="insert_head" inclure="comarquage_v3_pipeline.php"/>
+    <pipeline nom="insert_head_css" inclure="comarquage_v3_pipeline.php"/> -->
 
 </paquet>
