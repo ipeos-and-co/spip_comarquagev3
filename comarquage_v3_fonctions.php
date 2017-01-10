@@ -225,7 +225,7 @@ function comarquage_token() {
  */
 function inc_comarquagexml_to_array($u, $utiliser_namespace = false) {
     $d = New DOMDocument();
-    $d->loadXML($u);
+    @$d->loadXML($u);
 
     $paragraphe = $d->getElementsByTagName('Paragraphe');
     if ($paragraphe){
@@ -256,7 +256,7 @@ function inc_comarquagexml_to_array($u, $utiliser_namespace = false) {
     $u = $d->saveXML();
 
     if (is_string($u)) {
-  		$u = simplexml_load_string($u);
+  		$u = @simplexml_load_string($u);
   	}
 	return array('root' => @fluxXmlObjToArr($u, $utiliser_namespace));
 }
