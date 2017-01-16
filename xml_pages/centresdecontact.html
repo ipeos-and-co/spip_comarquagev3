@@ -10,7 +10,7 @@ Variables:
 <div class="page-centresdecontact">
 <BOUCLE_centresdecontact(DATA){source simplexml, #GET{url}|copie_locale{modif}, namespace}
   {datapath root/children}{datacache #GET{datacache}}>
-  <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}}{data=#VALEUR} />
+  <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}, env}{data=#VALEUR} />
 </BOUCLE_centresdecontact>
 </div>
 </B_centresdecontact>
