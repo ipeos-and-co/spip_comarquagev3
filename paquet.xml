@@ -6,10 +6,9 @@
     compatibilite="[3.0.0;3.1.*]"
     logo="prive/themes/spip/images/picto-comarquage-service-public-50.png"
 >
-    <nom>Comarquage Flux v3</nom>
-    <auteur>IPEOS I-Solutions</auteur>
+    <nom>Comarquage - Flux v3</nom>
     <auteur>Mickaël Hippocrate</auteur>
     <auteur>Laurent Vergerolle</auteur>
     <credit lien="http://www.ipeos.com">IPEOS I-Solutions</credit>
-    <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+    <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPLv3</licence>
 </paquet>

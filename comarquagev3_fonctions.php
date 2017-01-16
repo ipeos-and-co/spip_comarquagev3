@@ -1,11 +1,15 @@
 <?php
-/* Plugin Comarquage -flux V3-
- * Auteur Mickaël Hippocrate
- * Auteur IPEOS I-Solutions
+/**
+ * filtres et balises specifiques au plugin
  *
- * Licence GPL
- *
+ * @plugin Comarquage -flux V3
+ * @copyright 2017
+ * @author Mickaël Hippocrate
+ * @author Laurent Vergerolle
+ * @licence GPLv3
+ * @package SPIP\Comarquagev3\Fonctions
  */
+
  if (!defined("_ECRIRE_INC_VERSION")) {
  	return;
  }
