@@ -6,7 +6,7 @@ Variables:
 <B_texte>
 <div class="xml-texte">
 <BOUCLE_texte(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
-  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
 </BOUCLE_texte>
 </div>
 </B_texte>

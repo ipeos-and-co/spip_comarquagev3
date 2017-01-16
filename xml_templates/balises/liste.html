@@ -8,7 +8,7 @@ Variables:
 <BOUCLE_elements(DATA){source tableau, #VALEUR{children/item}}>
   <li class="xml-item">
   <BOUCLE_item_elements(DATA){source tableau, #VALEUR{children}}>
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+    <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
   </BOUCLE_item_elements>
   </li>
 </BOUCLE_elements>

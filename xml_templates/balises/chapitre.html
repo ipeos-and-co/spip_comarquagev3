@@ -7,7 +7,7 @@ Variables:
 <div class="xml-chapitre">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     [(#CLE|=={titre}|oui)<h3>#VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}</h3>]
-    [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />]
+    [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />]
   </BOUCLE_elements>
 </div>
 </BOUCLE_chapitre>

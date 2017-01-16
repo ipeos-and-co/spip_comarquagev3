@@ -10,7 +10,7 @@ Variables:
       <h3 class="panel-title">#VALEUR{0/text}</h3>
     </div>]
     [(#COMPTEUR_BOUCLE|=={1}|oui)<div class="panel-body">]
-      [(#CLE|!={titre}|oui)<INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{bloc=non} />]
+      [(#CLE|!={titre}|oui)<INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{bloc=non} />]
     [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)</div>]
   </BOUCLE_children>
 </div>

@@ -13,7 +13,7 @@ Variables:
     </div>
     <div class="panel-body">]
 <BOUCLE_voiraussi(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
-  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
 </BOUCLE_voiraussi>
 [(#ENV{bloc}|!={non}|oui)
   </div>

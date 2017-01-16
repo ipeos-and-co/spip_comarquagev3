@@ -9,7 +9,7 @@ Variables:
 
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
     <BOUCLE_elements(DATA){source tableau, #VALEUR}>
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR} />
+    <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
     </BOUCLE_elements>
   </BOUCLE_children>
 [(#ENV{no_html}|non)</p>]

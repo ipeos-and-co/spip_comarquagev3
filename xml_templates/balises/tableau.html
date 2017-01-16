@@ -8,7 +8,7 @@ Variables:
   <table class="table">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     [(#CLE|=={titre}|oui)<caption>#VALEUR{0/text}</caption>]
-    [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE|replace{é,e}}{data=#VALEUR} />]
+    [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE|replace{é,e}, env}{data=#VALEUR} />]
   </BOUCLE_elements>
   </table>
 </div>

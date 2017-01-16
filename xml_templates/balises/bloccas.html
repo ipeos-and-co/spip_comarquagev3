@@ -7,7 +7,7 @@ Variables:
 <BOUCLE_bloccas(DATA){source tableau, #ENV{data}}>
 <div class="xml-bloccas panel-group" id="bloccas-[(#GET{token})]">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-    <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{token=#GET{token}} />
+    <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{token=#GET{token}} />
   </BOUCLE_elements>
 </div>
 </BOUCLE_bloccas>

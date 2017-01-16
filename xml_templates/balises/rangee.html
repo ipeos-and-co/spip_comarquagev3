@@ -8,7 +8,7 @@ Variables:
   [(#VALEUR{attributes/type}|=={header}|oui)#SET{tag,th}]
   [(#VALEUR{attributes/type}|=={header}|non)#SET{tag,td}]
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
-  <INCLURE{fond=xml_templates/balises/#CLE}{data=#VALEUR}{balise_tag=#GET{tag}} />
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{balise_tag=#GET{tag}} />
   </BOUCLE_elements>
 </tr>
 </BOUCLE_rangee>
