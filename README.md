@@ -13,8 +13,9 @@ Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
 C'est pourquoi l'équipe de `IPEOS I-Solutions <http://www.ipeos.net>`_ c'est
 attelé à développer une version de comarquage sur le flux recommandé.
 
-Ce *plugin* a été développé pour les besoins de `IPEOS I-Solutions
-<http://www.ipeos.net>`_ par `Mickaël Hippocrate` et `Laurent Vergerolle`.
+Ce *plugin* a été développé pour les besoins de
+`IPEOS I-Solutions <http://www.ipeos.net>`_ par `Mickaël Hippocrate` et
+`Laurent Vergerolle`.
 
 ### À propos du comarquage
 
@@ -58,7 +59,7 @@ Les squelettes du comarquage utilisent les classes et composants de
 `Twitter Bootstrap v 3.3.7 <https://getbootstrap.com>`_ .
 
 Le flux est récupérer grâce à la balise DATA. Les boucles sont en cache
-par défaut pendant **86400 secondes** soit 1 jour. 
+par défaut pendant **86400 secondes** soit 1 jour.
 
 Les XMLs de comarquage sont copiés en locale `|copie_locale{modif}`. Pour
 forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
