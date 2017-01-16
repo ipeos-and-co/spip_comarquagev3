@@ -98,110 +98,69 @@ function parser_xml($xml){
 function media_local($id){
     $name= "";
     switch($id){
+      # Particuliers
         case "N19803":
-            $name = "argent.jpg";
+            $name = "part-argent.png";
             break;
         case "N19804":
-            $name = "europe.jpg";
+            $name = "part-europe.png";
             break;
         case "N19805":
-            $name = "famille.jpg";
+            $name = "part-famille.png";
             break;
         case "N19806":
-            $name = "formation.jpg";
+            $name = "part-travail.png";
             break;
         case "N19807":
-            $name = "justice.jpg";
+            $name = "part-justice.png";
             break;
         case "N19808":
-            $name = "logement.jpg";
+            $name = "part-logement.png";
             break;
         case "N19809":
-            $name = "loisirs.jpg";
+            $name = "part-loisirs.png";
             break;
         case "N19810":
-            $name = "citoyennete.jpg";
+            $name = "part-citoyennete.png";
             break;
         case "N19811":
-            $name = "sante.jpg";
+            $name = "part-sante.png";
             break;
         case "N19812":
-            $name = "transport.jpg";
+            $name = "part-transport.png";
             break;
-        case "F14128":
-            $name = "demenager.jpg";
-            break;
-        case "F16225":
-            $name = "enfant.jpg";
-            break;
-        case "F17556":
-            $name = "emploi.jpg";
-            break;
-        case "F14485":
-            $name = "marie.jpg";
-            break;
-        case "F16507":
-            $name = "deces.jpg";
-            break;
-        case "F1700":
-            $name = "administration.jpg";
-            break;
-        case "F15913":
-            $name = "achat-logement.jpg";
-            break;
-        case "F17904":
-            $name = "retraite.jpg";
-            break;
-        case "F17649":
-            $name = "succession.jpg";
-            break;
-        case "F3109":
-            $name = "associations.jpg";
-            break;
-        case "F21829":
-            $name = "logement.jpg";
-            break;
-        case "F601":
-            $name = "enfant.jpg";
-            break;
+
+        # Entreprise
         case "N24264":
-            $name = "creation-cession.jpg";
+            $name = "pro-creation-cessation.png";
             break;
         case "N24265":
-            $name = "fiscalite.jpg";
+            $name = "pro-fiscalite.png";
             break;
         case "N24266":
-            $name = "gestion-finance.jpg";
+            $name = "pro-gestion-finance.png";
             break;
         case "N24267":
-            $name = "rh.jpg";
+            $name = "pro-rh.png";
             break;
         case "N24268":
-            $name = "vente-commerce.jpg";
+            $name = "pro-vente-commerce.png";
             break;
         case "N24269":
-            $name = "secteurs.jpg";
+            $name = "pro-secteurs.png";
             break;
-        case "F23961":
-            $name = "comment-faire.jpg";
-            break;
-        case "F23697":
-            $name = "comment-faire.jpg";
-            break;
-        case "F23571":
-            $name = "comment-faire.jpg";
-            break;
+
         case "N31403":
-            $name = "associations.png";
+            $name = "asso-formalites.png";
             break;
         case "N31404":
-            $name = "associations.png";
+            $name = "asso-fonctionnement.png";
             break;
         case "N31405":
-            $name = "associations.png";
+            $name = "asso-finances.png";
             break;
         case "N31406":
-            $name = "associations.png";
+            $name = "asso-specifique.png";
             break;
         default:
             $name = " ";
