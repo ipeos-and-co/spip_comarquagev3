@@ -1,7 +1,7 @@
 <paquet
-    prefix="comarquagev3"
+    prefix="comarquage"
     categorie="divers"
-    version="0.1.0"
+    version="1.0.0"
     etat="stable"
     compatibilite="[3.0.0;3.1.*]"
     logo="prive/themes/spip/images/picto-comarquage-service-public-50.png"
@@ -9,6 +9,7 @@
     <nom>Comarquage - Flux v3</nom>
     <auteur>Mickaël Hippocrate</auteur>
     <auteur>Laurent Vergerolle</auteur>
+    <auteur>Olivier Watté</auteur>
     <credit lien="http://www.ipeos.com">IPEOS I-Solutions</credit>
     <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPLv3</licence>
 </paquet>

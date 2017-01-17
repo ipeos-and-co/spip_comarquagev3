@@ -7,7 +7,7 @@
  * @author Mickaël Hippocrate
  * @author Laurent Vergerolle
  * @licence GPLv3
- * @package SPIP\Comarquagev3\Fonctions
+ * @package SPIP\Comarquage\Fonctions
  */
 
  if (!defined("_ECRIRE_INC_VERSION")) {
