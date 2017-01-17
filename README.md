@@ -67,11 +67,11 @@ forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 Vous pouvez appeler une page précise en définissant les attributs xml de l'url.
 
 Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*
-utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`
+utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
 
 Pour appeler la page *Formalités administratives* de la catégorie
 *Associations*, insérer ce code : 
-`<comarquage|categorie=associations|xml=N31403>`
+`<comarquage|categorie=associations|xml=N31403>`.
 
 ## TODO
 
