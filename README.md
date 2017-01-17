@@ -47,9 +47,9 @@ Installer le plugin.
 
 Le flux s'insère dans un article au moyen des modèles suivants :
 
-- `<comarquage|categorie=particuliers>` pour le flux pour les *Particuliers*
-- `<comarquage|categorie=entreprises>` pour le flux pour les *Professionnels*
-- `<comarquage|categorie=associations>` pour le flux pour les *Associations*
+- flux pour les *Particuliers* : `<comarquage|categorie=particuliers>` 
+- flux pour les *Professionnels* : `<comarquage|categorie=entreprises>` 
+- flux pour les *Associations* : `<comarquage|categorie=associations>` 
 
 ### Intégration
 
