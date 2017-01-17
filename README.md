@@ -7,15 +7,15 @@ sur un site fonctionnant sous [SPIP](http://www.spip.net/>), les contenus et
 services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
-Ce *plugin* fonctionne avec le *Flux v3* de co-marquage et peut remplacer de 
-manière transparente le plugin 
+Ce *plugin* fonctionne avec le *Flux v3* de co-marquage et peut remplacer de
+manière transparente le plugin
 [Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
 sur un site existant.
 
 ### À propos du co-marquage
 
-Le co-marquage s'adresse aux services de l'État et aux administrations locales : 
-il permet aux sites web locaux de rediffuser les contenus et les services 
+Le co-marquage s'adresse aux services de l'État et aux administrations locales :
+il permet aux sites web locaux de rediffuser les contenus et les services
 offerts par le portail de l'administration française
 [Service-public.fr](https://www.service-public.fr/), en le complétant par des
 informations locales : coordonnées d’organismes, téléservices locaux, etc.
@@ -33,23 +33,19 @@ L’installation se déroule comme pour tous les
 ### Compatibilité avec le plugin *Comarquage Service public Flux v2*
 
 Si vous utilisez déjà le plugin
-[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
-vous devez simplement le désactiver et activer le
-*plugin Comarquage - Flux v3*. 
-
-Aucune modification des squelettes existants n'est à effectuer ; les nouveaux 
+[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2) aucune modification des squelettes existants n'est à effectuer ; les nouveaux
 modèles remplacent ceux fournis par
 [Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2).
- 
+
 ## Utilisation
 
 Installer le plugin.
 
 Le flux s'insère dans un article au moyen des modèles suivants :
 
-- flux pour les *Particuliers* : `<comarquage|categorie=particuliers>` 
-- flux pour les *Professionnels* : `<comarquage|categorie=entreprises>` 
-- flux pour les *Associations* : `<comarquage|categorie=associations>` 
+- flux pour les *Particuliers* : `<comarquage|categorie=particuliers>`
+- flux pour les *Professionnels* : `<comarquage|categorie=entreprises>`
+- flux pour les *Associations* : `<comarquage|categorie=associations>`
 
 ### Intégration
 
@@ -70,7 +66,7 @@ Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*
 utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
 
 Pour appeler la page *Formalités administratives* de la catégorie
-*Associations*, insérer ce code : 
+*Associations*, insérer ce code :
 `<comarquage|categorie=associations|xml=N31403>`.
 
 ## TODO
@@ -82,7 +78,7 @@ Pour appeler la page *Formalités administratives* de la catégorie
 
 ## Contribuer
 
-Ce plugin a été développé par [IPEOS I-Solutions](http://www.ipeos.com) pour 
+Ce plugin a été développé par [IPEOS I-Solutions](http://www.ipeos.com) pour
 la plate-forme [I-Administration](http://www.i-administration.fr) et ajouté aux
 contributions de la [communauté SPIP](https://contrib.spip.net/).
 
