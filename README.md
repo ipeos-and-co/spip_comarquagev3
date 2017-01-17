@@ -8,18 +8,16 @@ services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
 Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
-"Flux v3" a été mise en place et l'arrêt des mises à jour du "Flux v2" a été
+*Flux v3* a été mise en place et l'arrêt des mises à jour du *Flux v2* a été
 [annoncé officiellement](https://www.service-public.fr/partenaires/comarquage/actualites/15-06-2016-evolution-flux-en-2016).
-C'est pourquoi l'équipe de [IPEOS I-Solutions](http://www.ipeos.net) c'est
-attelé à développer une version de comarquage sur le flux recommandé.
 
 Ce *plugin* a été développé pour les besoins de
-[IPEOS I-Solutions](http://www.ipeos.net) par **Mickaël Hippocrate** et
+[IPEOS I-Solutions](http://www.ipeos.com) par **Mickaël Hippocrate** et
 **Laurent Vergerolle**.
 
-### À propos du comarquage
+### À propos du co-marquage
 
-Le comarquage s'adresse aux services de l'état et administrations locales, il
+Le co-marquage s'adresse aux services de l'État et administrations locales, il
 permet aux sites web locaux de rediffuser les contenus et les services offerts
 par le portail de l'administration française
 [Service-public.fr](https://www.service-public.fr/), en le complétant par des
@@ -30,45 +28,42 @@ informations locales : coordonnées d’organismes, téléservices locaux, etc.
 L’installation se déroule comme pour tous les
 [autres plugins](http://www.spip.net/fr_article3396.html).
 
-## Compatibilité avec le plugins Comarquage Service public Flux v2
+### Compatibilité avec le plugin *Comarquage Service public Flux v2*
 
-Si vous utilisé le plugin
+Si vous utilisez déjà le plugin
 [Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
-vous devez simplement désactiver ce plugin et activer le
-*plugin Comarquage - Flux v3*.
+vous devez simplement le désactiver et activer le
+*plugin Comarquage - Flux v3*. 
 
-L'ensemble des modèles existants dans le plugin
-[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
-ont été conservés pour assurer une continuité de service.
-
+Aucune modification des squelettes existants 
+n'est à effectuer ; les nouveaux modèles remplacent ceux fournis par
+[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2).
+ 
 ## Utilisation
 
 Installer le plugin.
-
 Le flux s'insère dans un article au moyen des modèles suivants :
 
-`<comarquage|categorie=particuliers>` pour le flux pour les *Particuliers*
-
-`<comarquage|categorie=entreprises>` pour le flux pour les *Professionnels*
-
-`<comarquage|categorie=associations>` pour le flux pour les *Associations*
+- `<comarquage|categorie=particuliers>` pour le flux pour les *Particuliers*
+- `<comarquage|categorie=entreprises>` pour le flux pour les *Professionnels*
+- `<comarquage|categorie=associations>` pour le flux pour les *Associations*
 
 ### Intégration
 
 Les squelettes du comarquage utilisent les classes et composants de
 [Twitter Bootstrap v3.3.7](https://getbootstrap.com).
 
-Le flux est récupérer grâce à la balise DATA. Les boucles sont en cache
-par défaut pendant **86400 secondes** soit 1 jour.
+Le flux est récupéré grâce à la balise DATA. Les boucles sont en cache
+par défaut pendant **86400 secondes** (24 h).
 
-Les XMLs de comarquage sont copiés en locale `|copie_locale{modif}`. Pour
+Les XMLs de co-marquage sont copiés en local `|copie_locale{modif}`. Pour
 forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 
 ### Astuces
 
-Vous pouvez préciser une page précise en définissant les attributs xml de l'url.
+Vous pouvez appeler une page précise en définissant les attributs xml de l'url.
 
-Par exemple pour appeler la page *Mariage* de la catégorie *particuliers*
+Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*
 utilisez ce code :
 
 `<comarquage|categorie=particuliers|xml=N142>`
@@ -80,7 +75,7 @@ Pour appeler la page *Formalités administratives* de la catégorie
 
 ## TODO
 
-- Gérer les pivots pour les informations locales
-- Ajouter un moteur de recherche interne au comarquage
-- Prendre en charge les redirections. cf. `redirection.xml`
-- Gérer les définitions et les acronymes. cf `<lienintra>` `<definition>`
+- Gérer les pivots pour les informations locales ;
+- ajouter un moteur de recherche interne au co-marquage
+- prendre en charge les redirections. cf. `redirection.xml`
+- gérer les définitions et les acronymes. cf `<lienintra>` `<definition>`
