@@ -2,18 +2,15 @@
 
 ## Présentation
 
-Comarquage - Flux v3 est  un *plugin* permettant d'intégrer et rediffuser,
+*Comarquage - Flux v3* est  un *plugin* permettant d'intégrer et rediffuser,
 sur un site fonctionnant sous [SPIP](http://www.spip.net/>), les contenus et
 services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
-Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
-*Flux v3* a été mise en place et l'arrêt des mises à jour du *Flux v2* a été
-[annoncée officiellement](https://www.service-public.fr/partenaires/comarquage/actualites/15-06-2016-evolution-flux-en-2016).
-
-Ce *plugin* a été développé pour les besoins de
-[IPEOS I-Solutions](http://www.ipeos.com) par **Mickaël Hippocrate**, 
-**Laurent Vergerolle** et **Olivier Watté**.
+Ce *plugin* fonctionne avec le *Flux v3* de co-marquage et peut remplacer de 
+manière transparente le plugin 
+[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
+sur un site existant.
 
 ### À propos du co-marquage
 
@@ -22,6 +19,11 @@ il permet aux sites web locaux de rediffuser les contenus et les services
 offerts par le portail de l'administration française
 [Service-public.fr](https://www.service-public.fr/), en le complétant par des
 informations locales : coordonnées d’organismes, téléservices locaux, etc.
+
+Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
+*Flux v3* a été mise en place et l'arrêt des mises à jour du *Flux v2* a été
+[annoncée officiellement](https://www.service-public.fr/partenaires/comarquage/actualites/15-06-2016-evolution-flux-en-2016).
+
 
 ## Installation
 
@@ -80,3 +82,19 @@ Pour appeler la page *Formalités administratives* de la catégorie
 - ajouter un moteur de recherche interne au co-marquage ;
 - prendre en charge les redirections. cf. `redirection.xml` ;
 - gérer les définitions et les acronymes. cf `<lienintra>` `<definition>`.
+
+## Contribuer
+
+Ce plugin a été développé par [IPEOS I-Solutions](http://www.ipeos.com) pour 
+la plate-forme [I-Administration](http://www.i-administration.fr) et ajouté aux
+contributions de la [communauté SPIP](https://contrib.spip.net/).
+
+Si vous trouvez ce plugin utile, vous pouvez :
+
+- soumettre un Pull Request, pour que nous intégrions vos améliorations ou corrections de bug ;
+- participer aux forums et aider des utilisateurs à intégrer ce plugin.
+
+### Team
+- [Mickaël Hippocrate](https://github.com/mickaelh/)
+- [Laurent Vergerolle](https://github.com/psychoz971/)
+- [Olivier Watté](https://github.com/owatte/)
