@@ -267,6 +267,13 @@ function inc_comarquagexml_to_array($u, $utiliser_namespace = false) {
 function fluxXmlObjToArr($obj, $utiliser_namespace = false, $parentName = '') {
 
 	$tableau = array();
+	$orderedTags = array(
+		'paragraphe',
+		'cas',
+		'chapitre',
+		'texte',
+		'souschapitre'
+	);
 
 	// Cette fonction getDocNamespaces() est longue sur de gros xml. On permet donc
 	// de l'activer ou pas suivant le contenu supposé du XML
@@ -309,7 +316,8 @@ function fluxXmlObjToArr($obj, $utiliser_namespace = false, $parentName = '') {
 				if (!empty($ns)) {
 					$childName = $ns . ':' . $childName;
 				}
-				if ($parentName == 'paragraphe') {
+
+				if (in_array($parentName, $orderedTags)) {
 					$children[][$childName][] = fluxXmlObjToArr($child, $namespace, $childName);
 				} else {
 					$children[$childName][] = fluxXmlObjToArr($child, $namespace, $childName);

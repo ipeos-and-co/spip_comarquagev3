@@ -6,8 +6,10 @@ Variables:
 <BOUCLE_souschapitre(DATA){source tableau, #ENV{data}}>
 <div class="xml-souschapitre">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+    <BOUCLE_ordre(DATA){source tableau, #VALEUR}>
     [(#CLE|=={titre}|oui)<h4>#VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}</h4>]
     [(#CLE|=={titre}|non)<INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />]
+    </BOUCLE_ordre>
   </BOUCLE_elements>
 </div>
 </BOUCLE_souschapitre>

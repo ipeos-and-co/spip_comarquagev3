@@ -1,13 +1,13 @@
 <paquet
     prefix="comarquage"
     categorie="divers"
-    version="1.0.1"
+    version="1.0.2"
     etat="stable"
     compatibilite="[3.0.0;3.1.*]"
     logo="prive/themes/spip/images/picto-comarquage-service-public.png"
     documentation="http://contrib.spip.net/?article4858"
 >
-    <nom>Comarquage - Flux v3</nom>
+    <nom>Co-Marquage Services Publics</nom>
     <auteur>Mickaël Hippocrate</auteur>
     <auteur>Laurent Vergerolle</auteur>
     <auteur>Olivier Watté</auteur>
