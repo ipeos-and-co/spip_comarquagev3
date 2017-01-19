@@ -1,4 +1,16 @@
 <?php
+/**
+ * Fichier de langue pour le plugin Comarquage
+ *
+ * @plugin     Comarquage
+ * @copyright  2017
+ * @author     Mickaël Hippocrate
+ * @author     Laurent Vergerolle
+ * @author     Olivier Watté
+ * @licence    GPLv3
+ * @package    SPIP/Comarquage/Lang
+ */
+
 if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }

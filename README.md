@@ -1,10 +1,10 @@
-# Comarquage - Flux v3
+# Co-Marquage Services Publics
 
 ## Présentation
 
-*Comarquage - Flux v3* est  un *plugin* permettant d'intégrer et rediffuser,
-sur un site fonctionnant sous [SPIP](http://www.spip.net/>), les contenus et
-services offerts par le portail de l'administration française,
+*Co-Marquage Services Publics* est  un *plugin* permettant d'intégrer et
+rediffuser, sur un site fonctionnant sous [SPIP](http://www.spip.net/>),
+les contenus et services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
 Ce *plugin* fonctionne avec le *Flux v3* de co-marquage et peut remplacer de
@@ -30,10 +30,11 @@ Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
 L’installation se déroule comme pour tous les
 [autres plugins](http://www.spip.net/fr_article3396.html).
 
-### Compatibilité avec le plugin *Comarquage Service public Flux v2*
+### Compatibilité avec la version 0.x
 
 Si vous utilisez déjà le plugin
-[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2) aucune modification des squelettes existants n'est à effectuer ; les nouveaux
+[Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
+aucune modification des squelettes existants n'est à effectuer ; les nouveaux
 modèles remplacent ceux fournis par
 [Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2).
 
@@ -84,8 +85,10 @@ contributions de la [communauté SPIP](https://contrib.spip.net/).
 
 Si vous trouvez ce plugin utile, vous pouvez :
 
-- soumettre un Pull Request, pour que nous intégrions vos améliorations ou corrections de bug ;
-- participer aux forums et aider des utilisateurs à intégrer ce plugin.
+- [soumettre un Pull Request](https://github.com/ipeos-and-co/spip_comarquagev3), 
+pour que nous intégrions vos améliorations ou corrections de bug ;
+- [participer aux forums](http://contrib.spip.net/?article4858) et aider des
+utilisateurs à intégrer ce plugin.
 
 ### Team
 - [Mickaël Hippocrate](https://github.com/mickaelh/)
