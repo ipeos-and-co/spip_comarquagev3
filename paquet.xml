@@ -1,13 +1,14 @@
 <paquet
     prefix="comarquage"
     categorie="divers"
-    version="1.0.2"
+    version="1.0.3"
     etat="stable"
     compatibilite="[3.0.0;3.1.*]"
     logo="prive/themes/spip/images/picto-comarquage-service-public.png"
     documentation="http://contrib.spip.net/?article4858"
+    developpement="https://github.com/ipeos-and-co/spip_comarquagev3/"
 >
-    <nom>Co-Marquage Services Publics</nom>
+    <nom>Co-Marquage Service Public</nom>
     <auteur>Mickaël Hippocrate</auteur>
     <auteur>Laurent Vergerolle</auteur>
     <auteur>Olivier Watté</auteur>

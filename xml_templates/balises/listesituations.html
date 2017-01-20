@@ -1,0 +1,13 @@
+[(#REM)
+Variables:
+  data : Tableau de données listant le contenu
+-->]
+[(#SET{token, #REM|comarquage_token})]
+
+<BOUCLE_listesituation(DATA){source tableau, #ENV{data}}>
+<div class="xml-situations" id="situations-[(#GET{token})]">
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+    <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{token=#GET{token}} />
+  </BOUCLE_elements>
+</div>
+</BOUCLE_listesituation>

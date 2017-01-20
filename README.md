@@ -1,9 +1,9 @@
-# Co-Marquage Services Publics
+# Co-Marquage Service Public
 
 ## Présentation
 
-*Co-Marquage Services Publics* est  un *plugin* permettant d'intégrer et
-rediffuser, sur un site fonctionnant sous [SPIP](http://www.spip.net/>),
+*Co-Marquage Service Public* est un *plugin* permettant d'intégrer et
+de rediffuser, sur un site fonctionnant sous [SPIP](http://www.spip.net/>),
 les contenus et services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
@@ -40,9 +40,7 @@ modèles remplacent ceux fournis par
 
 ## Utilisation
 
-Installer le plugin.
-
-Le flux s'insère dans un article au moyen des modèles suivants :
+Après avoir installé le plugin, le flux s'insère dans un article au moyen des modèles suivants :
 
 - flux pour les *Particuliers* : `<comarquage|categorie=particuliers>`
 - flux pour les *Professionnels* : `<comarquage|categorie=entreprises>`
@@ -50,21 +48,20 @@ Le flux s'insère dans un article au moyen des modèles suivants :
 
 ### Intégration
 
-Les squelettes du comarquage utilisent les classes et composants de
+Les squelettes de *Co-Marquage Service Public* utilisent les classes et composants de
 [Twitter Bootstrap v3.3.7](https://getbootstrap.com).
 
 Le flux est récupéré grâce à la balise DATA. Les boucles sont en cache
-par défaut pendant **86400 secondes** (24 h).
+par défaut pendant **86400 secondes** (soit 24 h).
 
 Les XMLs de co-marquage sont copiés en local `|copie_locale{modif}`. Pour
 forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 
 ### Astuces
 
-Vous pouvez appeler une page précise en définissant les attributs xml de l'url.
+Vous pouvez appeler une page précise en définissant l'attribut `xml` du modèle.
 
-Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*
-utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
+Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*, utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
 
 Pour appeler la page *Formalités administratives* de la catégorie
 *Associations*, insérer ce code :
@@ -87,7 +84,7 @@ Si vous trouvez ce plugin utile, vous pouvez :
 
 - [soumettre un Pull Request](https://github.com/ipeos-and-co/spip_comarquagev3), 
 pour que nous intégrions vos améliorations ou corrections de bug ;
-- [participer aux forums](http://contrib.spip.net/?article4858) et aider des
+- [participer aux forums](http://contrib.spip.net/?article4858) et aider les
 utilisateurs à intégrer ce plugin.
 
 ### Team
