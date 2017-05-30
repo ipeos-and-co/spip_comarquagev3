@@ -16,11 +16,16 @@ Variables:
     <div class="panel-body">]
 <ul class="xml-serviceenligne">
 <BOUCLE_serviceenligne(DATA){source tableau, #ENV{data}}>
-  <li>
+	<li>
     [(#VALEUR{attributes/url}|oui)<a href="#VALEUR{attributes/url}" target="_blank">]
     [(#VALEUR{attributes/url}|non)<a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">]
-      #VALEUR{children/titre/0/text} [(#VALEUR{attributes/url}|oui)<i class="fa fa-external-link"></i>]</a><br />
-    <small class="xml-serviceenligne-source"><i>#VALEUR{children/source/0/text}</i></small>
+      #VALEUR{children/titre/0/text} [(#VALEUR{attributes/url}|oui)<i class="fa fa-external-link"></i>]</a>[ (#VALEUR{attributes/numerocerfa}|oui)<span class="cerfa">Cerfa n°[(#VALEUR{attributes/numerocerfa})]</span> ]<br />
+    [<small class="xml-serviceenligne-source"><i>(#VALEUR{children/source/0/text})</i></small>]
+	<B_children>
+	  <BOUCLE_children (DATA) {source tableau, #VALEUR{children}} {cle !IN source,titre}>
+		  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
+	  </BOUCLE_children>
+	</B_children>
   </li>
 </BOUCLE_serviceenligne>
 </ul>
