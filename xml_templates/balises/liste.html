@@ -6,11 +6,13 @@ Variables:
 <BOUCLE_liste(DATA){source tableau, #ENV{data}}>
 [(#VALEUR{attributes/type}|=={puce}|oui)<ul class="xml-liste">]
 <BOUCLE_elements(DATA){source tableau, #VALEUR{children/item}}>
+	<B_item_elements>
   <li class="xml-item">
   <BOUCLE_item_elements(DATA){source tableau, #VALEUR{children}}>
     <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
   </BOUCLE_item_elements>
   </li>
+	</B_item_elements>
 </BOUCLE_elements>
 [(#VALEUR{attributes/type}|=={puce}|oui)</ul>]
 </BOUCLE_liste>
