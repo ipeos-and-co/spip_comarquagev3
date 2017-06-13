@@ -11,7 +11,7 @@ Variables:
       <div class="panel-heading" id="cas-head-#ENV{token}-#_cas:COMPTEUR_BOUCLE">
         <h4 class="panel-title">
           <a href="#[cas-#ENV{token}-(#_cas:COMPTEUR_BOUCLE)]" data-parent="#bloccas-#ENV{token}" data-toggle="collapse">
-            #VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}
+            [(#VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}|sinon{[(#VALEUR{0/children/paragraphe/0/text})]})]
         </a></h4>
       </div>]
     [(#_elements:COMPTEUR_BOUCLE|=={1}|oui)
