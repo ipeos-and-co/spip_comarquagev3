@@ -49,6 +49,21 @@ function filtre_type_categorie_dist($categorie) {
 }
 
 /**
+ * Définit la variable `xml` à la valeur passée en paramètre ou à la
+ * valeur par défaut.
+ *
+ * Nécessaire pour SPIP 2, dont la balise #GET ne renvoie pas la valeur par
+ * défaut si la variable est vide.
+ *
+ * @param string $set
+ * @return string
+ */
+function filtre_set_xml($set) {
+	$xml = _request('xml');
+	return $xml ? $xml : 'accueil';
+}
+
+/**
  * Identification template
  *
  * @param string $xml
@@ -340,4 +355,31 @@ function fluxXmlObjToArr($obj, $utiliser_namespace = false, $parentName = '') {
 	}
 
 	return $tableau;
+}
+
+global $spip_version_branche;
+if($spip_version_branche[0] == "2") {
+	/**
+	 * Surcharge le filtre table_valeur pour accepter la syntaxe a/b
+	 * au lieu d'avoir à faire table_valeur{a}|table_valeur{b}.
+	 *
+	 * Nécessaire pour SPIP 2.
+	 *
+	 * @param array $table
+	 * @param string $cle
+	 * @param string $defaut
+	 * @return string
+	 */
+	function filtre_table_valeur_dist($table,$cle,$defaut='') {
+		$table = is_string($table)?unserialize($table):$table;
+		$table = is_array($table)?$table:array();
+
+		// https://stackoverflow.com/a/9628276
+		$temp = &$table;
+		foreach(explode('/', $cle) as $key) {
+			if(! isset($temp[$key])) return $defaut;
+			$temp = &$temp[$key];
+		}
+		return $temp;
+	}
 }

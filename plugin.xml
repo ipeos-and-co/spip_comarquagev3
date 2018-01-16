@@ -1,0 +1,16 @@
+<plugin>
+    <nom>Co-Marquage Service Public</nom>
+    <categorie>divers</categorie>
+    <auteur>Mickaël Hippocrate</auteur>
+    <auteur>Laurent Vergerolle</auteur>
+    <auteur>Olivier Watté</auteur>
+    <licence>GPL</licence>
+    <fonctions>comarquage_fonctions.php</fonctions>
+    <version>1.0.5</version>
+    <etat>stable</etat>
+    <icon>prive/themes/spip/images/picto-comarquage-service-public.png</icon>
+    <lien>http://spip-contrib.net/?article4858</lien>
+    <prefix>comarquage</prefix>
+    <necessite id="SPIP" version="[2.1.30;2.1.99]" />
+    <necessite id="iterateurs" version="[1.0.6;]" />
+</plugin>
