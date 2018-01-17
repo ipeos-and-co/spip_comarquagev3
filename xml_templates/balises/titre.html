@@ -1,0 +1,12 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<B_titre>
+<div class="xml-titre">
+    <h3 class="panel-title" >
+        [(#ENV{data}|table_valeur{0/text})]
+    </h3>
+</div>
+</B_titre>

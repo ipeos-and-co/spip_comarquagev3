@@ -1,0 +1,12 @@
+[(#REM)
+Variables:
+  data : Contenu a parser
+-->]
+
+<B_avertissement>
+<div class="xml-avertissement lead">
+<BOUCLE_avertissement(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
+</BOUCLE_avertissement>
+</div>
+</B_avertissement>
