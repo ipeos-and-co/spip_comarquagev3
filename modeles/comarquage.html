@@ -8,7 +8,7 @@
 [(#SET{parametres,#ARRAY})]
 
 [(#SET{categorie, #ENV{categorie,'particuliers'}})]
-[(#SET{xml,#ENV{xml,#GET{xml ,'accueil'}}})]
+[(#GET{xml}|set_xml|set{xml})]
 
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{categorie,#GET{categorie}}}}
 #SET{parametres, #GET{parametres}|array_merge{#ARRAY{xml,#GET{xml}}}}
