@@ -8,6 +8,8 @@
     <fonctions>comarquage_fonctions.php</fonctions>
     <version>1.0.5</version>
     <etat>stable</etat>
+    <description>Rediffuser le flux de la documentation française du service public
+  	</description>
     <icon>prive/themes/spip/images/picto-comarquage-service-public.png</icon>
     <lien>http://spip-contrib.net/?article4858</lien>
     <prefix>comarquage</prefix>
