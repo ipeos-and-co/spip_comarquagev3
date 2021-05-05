@@ -4,13 +4,13 @@ Variables:
 -->]
 
 <B_noticeliee>
-<div class="xml-noticesliees panel panel-info">
-  <div class="panel-heading">
-    <h4 class="panel-title"><:comarquage:aider_remplir_form:></h4>
+<div class="xml-noticesliees card card-info my-3">
+  <div class="card-header">
+    <h4 class="card-title h5 mb-0 text-dark"><:comarquage:aider_remplir_form:></h4>
   </div>
-  <div class="panel-body">
+  <div class="card-body bg-white">
   <BOUCLE_noticeliee(DATA){source tableau, #ENV{data}}>
-  <p class="#VALEUR{name}">
+  <p class="mb-2 #VALEUR{name}">
     <a href="#VALEUR{attributes/url}" target="_blank">#VALEUR{text} <i class="fa fa-external-link"></i></a>
   </p>
   </BOUCLE_noticeliee>

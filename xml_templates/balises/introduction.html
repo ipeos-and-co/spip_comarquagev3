@@ -4,7 +4,7 @@ Variables:
 -->]
 
 <B_introduction>
-<div class="xml-introduction lead">
+<div class="xml-introduction lead my-3">
 <BOUCLE_introduction(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
   <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
 </BOUCLE_introduction>

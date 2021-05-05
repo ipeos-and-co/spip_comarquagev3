@@ -5,12 +5,12 @@ data : Tableau de données listant le contenu
 <B_situation>
 	<div class="xml-situation">
 		<BOUCLE_situation(DATA){source tableau, #ENV{data}}>
-		[(#COMPTEUR_BOUCLE|=={1}|oui)<ul class="nav nav-tabs tabs-menu xml-sommaire" role="tablist">]
+		[(#COMPTEUR_BOUCLE|=={1}|oui)<ul class="nav nav-tabs tabs-menu xml-sommaire mb-3" role="tablist">]
 			<B_elements_titre>
 			<BOUCLE_elements_titre (DATA) {source tableau, #VALEUR{children}}>
 				[(#CLE|=={titre}|oui)
-				<li[ class="active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)in"]>
-					<a href="#[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]"[ class="nav-active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)"] role="tab" data-toggle="tab" aria-controls="[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]">
+				<li class="nav-item[ active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)in]">
+					<a href="#[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]" class="nav-link [active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)]" role="tab" data-toggle="tab" aria-controls="[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]">
 						#VALEUR{0/text}
 					</a>
 				</li>]
@@ -23,7 +23,7 @@ data : Tableau de données listant le contenu
 			<B_elements_texte>
 					<BOUCLE_elements_texte (DATA) {source tableau, #VALEUR{children}}>
 						[(#CLE|=={titre}|non)
-						<div id="[situation-#ENV{token}-(#_situation_tab_content:COMPTEUR_BOUCLE)]" class="tab-pane fade xml-situation-content clearfix[(#_situation_tab_content:COMPTEUR_BOUCLE|=={1}|oui)active in]" role="tabpanel" aria-labelledby="[situation-#ENV{token}-(#_situation_tab_content:COMPTEUR_BOUCLE)]">
+						<div id="[situation-#ENV{token}-(#_situation_tab_content:COMPTEUR_BOUCLE)]" class="tab-pane fade xml-situation-content clearfix[(#_situation_tab_content:COMPTEUR_BOUCLE|=={1}|oui)active in show]" role="tabcard" aria-labelledby="[situation-#ENV{token}-(#_situation_tab_content:COMPTEUR_BOUCLE)]">
 							<INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
 						</div>
 						]

@@ -4,12 +4,12 @@ Variables:
 -->]
 
 <BOUCLE_groupe(DATA){source tableau, #ENV{data}}>
-<div class="[xml-(#VALEUR{name}) ]panel panel-default" title="[(#VALEUR{attributes/type}|attribut_html)]">
+<div class="[xml-(#VALEUR{name}) ]card mb-4 mt-2" title="[(#VALEUR{attributes/type}|attribut_html)]">
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
-    [(#CLE|=={titre}|oui)<div class="panel-heading">
-      <h3 class="panel-title">#VALEUR{0/text}</h3>
+    [(#CLE|=={titre}|oui)<div class="card-header">
+      <h3 class="card-title h5 mb-0 text-dark">#VALEUR{0/text}</h3>
     </div>]
-    [(#COMPTEUR_BOUCLE|=={1}|oui)<div class="panel-body">]
+    [(#COMPTEUR_BOUCLE|=={1}|oui)<div class="card-body bg-white">]
       [(#CLE|!={titre}|oui)<INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{bloc=non} />]
     [(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)</div>]
   </BOUCLE_children>

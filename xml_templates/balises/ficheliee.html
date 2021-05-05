@@ -7,11 +7,11 @@ Variables:
 
 <B_ficheliee>
 [(#ENV{bloc}|!={non}|oui)
-<div class="xml-bloc-ficheliee panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><:comarquage:ficheliees:></h3>
+<div class="xml-bloc-ficheliee card">
+    <div class="card-header">
+      <h3 class="card-title h5 mb-0 text-dark"><:comarquage:ficheliees:></h3>
     </div>
-    <div class="panel-body">]
+    <div class="card-body bg-white">]
 <ul class="xml-ficheliee">
 <BOUCLE_ficheliee(DATA){source tableau, #ENV{data}}>
   <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">#VALEUR{children/titre/0/text} </a>

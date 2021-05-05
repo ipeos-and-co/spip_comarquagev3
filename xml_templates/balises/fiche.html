@@ -7,8 +7,8 @@ Variables:
 
 <B_fiche>
 [(#ENV{bloc}|!={non}|oui)
-<div class="xml-bloc-fiche panel panel-default">
-  <div class="panel-body">]
+<div class="xml-bloc-fiche card">
+  <div class="card-body bg-white">]
 <ul class="xml-fiche">
 <BOUCLE_fiche(DATA){source tableau, #ENV{data}}>
   <li><a href="[(#SELF|parametre_url{xml,#VALEUR{attributes/id}})]">

@@ -5,7 +5,7 @@ Variables:
 -->]
 
 <BOUCLE_paragraphe(DATA){source tableau, #ENV{data}}>
-[(#ENV{no_html}|non)<p class="xml-paragraphe">]#VALEUR{text}
+[(#ENV{no_html}|non)<p class="xml-paragraphe mb-2">]#VALEUR{text}
 
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
     <BOUCLE_elements(DATA){source tableau, #VALEUR}>

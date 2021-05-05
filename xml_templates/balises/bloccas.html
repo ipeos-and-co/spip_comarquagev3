@@ -5,7 +5,7 @@ Variables:
 [(#SET{token, #REM|comarquage_token})]
 
 <BOUCLE_bloccas(DATA){source tableau, #ENV{data}}>
-<div class="xml-bloccas panel-group" id="bloccas-[(#GET{token})]">
+<div class="xml-bloccas accordion mb-4" id="bloccas-[(#GET{token})]">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR}{token=#GET{token}} />
   </BOUCLE_elements>
