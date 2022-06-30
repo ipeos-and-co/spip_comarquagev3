@@ -4,15 +4,16 @@
     <auteur>Mickaël Hippocrate</auteur>
     <auteur>Laurent Vergerolle</auteur>
     <auteur>Olivier Watté</auteur>
+    <auteur>Morgan Lejuez</auteur>
     <licence>GPL</licence>
     <fonctions>comarquage_fonctions.php</fonctions>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <etat>stable</etat>
     <description>Rediffuser le flux de la documentation française du service public
   	</description>
     <icon>prive/themes/spip/images/picto-comarquage-service-public.png</icon>
     <lien>https://spip-contrib.net/?article4858</lien>
     <prefix>comarquage</prefix>
-    <necessite id="SPIP" version="[2.1.30;3.2.99]" />
+    <necessite id="SPIP" version="[3.0.0;4.0.99]" />
     <necessite id="iterateurs" version="[1.0.6;]" />
 </plugin>

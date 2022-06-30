@@ -10,7 +10,7 @@ data : Tableau de données listant le contenu
 			<BOUCLE_elements_titre (DATA) {source tableau, #VALEUR{children}}>
 				[(#CLE|=={titre}|oui)
 				<li class="nav-item[ active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)in]">
-					<a href="#[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]" class="nav-link [active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)]" role="tab" data-toggle="tab" aria-controls="[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]">
+					<a href="#[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]" class="nav-link [active(#_situation:COMPTEUR_BOUCLE|=={1}|oui)]" role="tab" data-bs-toggle="tab" aria-controls="[situation-#ENV{token}-(#_situation:COMPTEUR_BOUCLE)]">
 						#VALEUR{0/text}
 					</a>
 				</li>]
