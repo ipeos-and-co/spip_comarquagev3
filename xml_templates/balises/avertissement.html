@@ -4,11 +4,11 @@ Variables:
 -->]
 
 <B_avertissement>
-<div class="panel panel-warning xml-avertissement">
+<div class="card alert-warning xml-avertissement mb-4">
 <BOUCLE_avertissement(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
-  [(#CLE|=={titre}|oui)<div class="panel-heading">
+  [(#CLE|=={titre}|oui)<div class="card-header alert-warning">
     <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
-  </div>][(#CLE|=={titre}|non)<div class="panel-body">
+  </div>][(#CLE|=={titre}|non)<div class="card-body bg-white">
     <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
   </div>]
 </BOUCLE_avertissement>

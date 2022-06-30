@@ -9,11 +9,11 @@ Variables:
 
 <B_serviceenligneannexe>
 [(#ENV{bloc}|!={non}|oui)
-<div class="xml-bloc-serviceenligneannexe panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><:comarquage:services_en_ligne:></h3>
+<div class="xml-bloc-serviceenligneannexe card mb-4 mt-2">
+    <div class="card-header">
+      <h3 class="card-title h5 mb-0 text-dark"><:comarquage:services_en_ligne:></h3>
     </div>
-    <div class="panel-body">]
+    <div class="card-body bg-white">]
 <ul class="xml-serviceenligneannexe">
 <BOUCLE_serviceenligneannexe(DATA){source tableau, #ENV{data}}>
   <li>

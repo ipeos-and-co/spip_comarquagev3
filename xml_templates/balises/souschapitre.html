@@ -4,7 +4,7 @@ Variables:
 -->]
 
 <BOUCLE_souschapitre(DATA){source tableau, #ENV{data}}>
-<div class="xml-souschapitre">
+<div class="xml-souschapitre my-3">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     <BOUCLE_ordre(DATA){source tableau, #VALEUR}>
     [(#CLE|=={titre}|oui)<h4>#VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}</h4>]

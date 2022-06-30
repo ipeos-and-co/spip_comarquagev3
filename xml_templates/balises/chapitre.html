@@ -4,7 +4,7 @@ Variables:
 -->]
 
 <BOUCLE_chapitre(DATA){source tableau, #ENV{data}}>
-<div class="xml-chapitre">
+<div class="xml-chapitre mb-5">
   <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
     <BOUCLE_ordre(DATA){source tableau, #VALEUR}>
       [(#CLE|=={titre}|oui)<h3>#VALEUR{0/children/paragraphe/0/children/0/texteinterne/0/text}</h3>]

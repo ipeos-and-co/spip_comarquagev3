@@ -7,11 +7,11 @@ Variables:
 
 <B_voiraussi>
 [(#ENV{bloc}|!={non}|oui)
-<div class="xml-bloc-voiraussi panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><:comarquage:voiraussi:></h3>
+<div class="xml-bloc-voiraussi card mb-4 mt-2">
+    <div class="card-header">
+      <h3 class="card-title h5 mb-0 text-dark"><:comarquage:voiraussi:></h3>
     </div>
-    <div class="panel-body">]
+    <div class="card-body bg-white">]
 <BOUCLE_voiraussi(DATA){source tableau, #ENV{data}|table_valeur{0/children}}>
   <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
 </BOUCLE_voiraussi>
