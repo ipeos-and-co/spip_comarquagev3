@@ -2,12 +2,12 @@
 
 ## Présentation
 
-*Co-Marquage Service Public* est un *plugin* permettant d'intégrer et
+_Co-Marquage Service Public_ est un _plugin_ permettant d'intégrer et
 de rediffuser, sur un site fonctionnant sous [SPIP](http://www.spip.net/>),
 les contenus et services offerts par le portail de l'administration française,
 [Service-public.fr](https://www.service-public.fr/).
 
-Ce *plugin* fonctionne avec le *Flux v3* de co-marquage et peut remplacer de
+Ce _plugin_ fonctionne avec le _Flux v3_ de co-marquage et peut remplacer de
 manière transparente le plugin
 [Comarquage Service public Flux v2](https://contrib.spip.net/Comarquage-Service-public-Flux-v2)
 sur un site existant.
@@ -21,9 +21,8 @@ offerts par le portail de l'administration française
 informations locales : coordonnées d’organismes, téléservices locaux, etc.
 
 Depuis août 2016, une nouvelle organisation des fichiers XML, appelée
-*Flux v3* a été mise en place et l'arrêt des mises à jour du *Flux v2* a été
+_Flux v3_ a été mise en place et l'arrêt des mises à jour du _Flux v2_ a été
 [annoncée officiellement](https://www.service-public.fr/partenaires/comarquage/actualites/15-06-2016-evolution-flux-en-2016).
-
 
 ## Installation
 
@@ -42,14 +41,14 @@ modèles remplacent ceux fournis par
 
 Après avoir installé le plugin, le flux s'insère dans un article au moyen des modèles suivants :
 
-- flux pour les *Particuliers* : `<comarquage|categorie=particuliers>`
-- flux pour les *Professionnels* : `<comarquage|categorie=entreprises>`
-- flux pour les *Associations* : `<comarquage|categorie=associations>`
+- flux pour les _Particuliers_ : `<comarquage|categorie=particuliers>`
+- flux pour les _Professionnels_ : `<comarquage|categorie=entreprises>`
+- flux pour les _Associations_ : `<comarquage|categorie=associations>`
 
 ### Intégration
 
-Les squelettes de *Co-Marquage Service Public* utilisent les classes et composants de
-[Twitter Bootstrap v3.3.7](https://getbootstrap.com).
+Les squelettes de _Co-Marquage Service Public_ utilisent les classes et composants de
+[Twitter Bootstrap v5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/).
 
 Le flux est récupéré grâce à la balise DATA. Les boucles sont en cache
 par défaut pendant **86400 secondes** (soit 24 h).
@@ -61,10 +60,10 @@ forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 
 Vous pouvez appeler une page précise en définissant l'attribut `xml` du modèle.
 
-Par exemple pour afficher la page *Mariage* de la catégorie *particuliers*, utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
+Par exemple pour afficher la page _Mariage_ de la catégorie _particuliers_, utilisez ce code : `<comarquage|categorie=particuliers|xml=N142>`.
 
-Pour appeler la page *Formalités administratives* de la catégorie
-*Associations*, insérer ce code :
+Pour appeler la page _Formalités administratives_ de la catégorie
+_Associations_, insérer ce code :
 `<comarquage|categorie=associations|xml=N31403>`.
 
 ## TODO
@@ -82,12 +81,13 @@ contributions de la [communauté SPIP](https://contrib.spip.net/).
 
 Si vous trouvez ce plugin utile, vous pouvez :
 
-- [soumettre un Pull Request](https://github.com/ipeos-and-co/spip_comarquagev3), 
-pour que nous intégrions vos améliorations ou corrections de bug ;
+- [soumettre un Pull Request](https://github.com/ipeos-and-co/spip_comarquagev3),
+  pour que nous intégrions vos améliorations ou corrections de bug ;
 - [participer aux forums](http://contrib.spip.net/?article4858) et aider les
-utilisateurs à intégrer ce plugin.
+  utilisateurs à intégrer ce plugin.
 
 ### Team
+
 - [Mickaël Hippocrate](https://github.com/mickaelh/)
 - [Laurent Vergerolle](https://github.com/psychoz971/)
 - [Olivier Watté](https://github.com/owatte/)
