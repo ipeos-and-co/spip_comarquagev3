@@ -35,12 +35,12 @@ function filtre_type_categorie_dist($categorie) {
 			break;
 
 		case 'entreprises':
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.0/pro/xml/";
+			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/pro/xml/";
 			$parametres_xml['CATEGORIE'] = "pro";
 			break;
 
 		default:
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.0/part/xml/";
+			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 	}
