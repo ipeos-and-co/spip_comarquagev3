@@ -238,7 +238,10 @@ function inc_comarquagexml_to_array($u, $utiliser_namespace = false) {
 	if ($paragraphe) {
 		for ($i = 0; $i < $paragraphe->length; $i++) {
 			for ($x = 0; $x < $paragraphe->item($i)->childNodes->length; $x++) {
-				if (is_null($paragraphe->item($i)->childNodes->item($x)->tagName)) {
+				if (
+					isset($paragraphe->item($i)->childNodes->item($x)->tagName)
+					and is_null($paragraphe->item($i)->childNodes->item($x)->tagName)
+				) {
 
 					// code http://php.net/manual/fr/domnode.replacechild.php#48485
 					// Ajouts d'un noeud "texteInterne"
