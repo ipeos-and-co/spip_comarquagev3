@@ -25,12 +25,12 @@ function filtre_type_categorie_dist($categorie) {
 	$parametres_xml = array();
 	switch ($categorie) {
 		case "particuliers":
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.0/part/xml/";
+			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 
 		case "associations":
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.0/asso/xml/";
+			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/asso/xml/";
 			$parametres_xml['CATEGORIE'] = "asso";
 			break;
 
