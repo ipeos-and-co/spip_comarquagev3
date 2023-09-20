@@ -114,7 +114,7 @@ function type_entrer($xml) {
  * @return string
  */
 function parser_xml($xml) {
-	$id = $xml[0];
+	$id = substr($xml,0,1);
 	switch ($id) {
 		case "F":
 			$noeud = "fiche";
