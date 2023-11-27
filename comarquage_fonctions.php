@@ -14,6 +14,33 @@ if (!defined("_ECRIRE_INC_VERSION")) {
 	return;
 }
 
+
+function comarquage_url_cache($url) {
+	include_spip('inc/distant');
+	if (function_exists('recuperer_url_cache')) {
+		// version moderne
+		$fichier_cache = sous_repertoire(_DIR_CACHE, 'comarquage') . basename(nom_fichier_copie_locale($url, 'xml'));
+		$options = [
+			'delai_cache' => 3600,
+			'file' => $fichier_cache,
+		];
+		if (file_exists($fichier_cache)) {
+			$options['if_modified_since'] = filemtime($fichier_cache);
+		}
+		$res = recuperer_url_cache($url, $options);
+		if (!$res or !$res['length']) {
+			if (!file_exists($fichier_cache)) {
+				return false;
+			}
+		}
+		return $fichier_cache;
+
+	} else {
+		// compat old SPIP
+		return copie_locale($url, 'modif');
+	}
+}
+
 /**
  * Récupération des types de catégorie et leurs URL
  *

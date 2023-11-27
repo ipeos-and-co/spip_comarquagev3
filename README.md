@@ -53,7 +53,7 @@ Les squelettes de _Co-Marquage Service Public_ utilisent les classes et composan
 Le flux est récupéré grâce à la balise DATA. Les boucles sont en cache
 par défaut pendant **86400 secondes** (soit 24 h).
 
-Les XMLs de co-marquage sont copiés en local `|copie_locale{modif}`. Pour
+Les XMLs de co-marquage sont copiés en local `|comarquage_url_cache`. Pour
 forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 
 ### Astuces

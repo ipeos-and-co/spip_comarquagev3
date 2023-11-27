@@ -8,7 +8,7 @@ Variables:
 
 <B_questionsreponses>
 <div class="page-questionsreponses">
-<BOUCLE_questionsreponses(DATA){source simplexml, #GET{url}|copie_locale{modif}, namespace}
+<BOUCLE_questionsreponses(DATA){source simplexml, (#GET{url}|comarquage_url_cache), namespace}
   {datapath root/children}{datacache #GET{datacache}}>
   <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}, env}{data=#VALEUR} />
 </BOUCLE_questionsreponses>

@@ -9,7 +9,7 @@ Variables:
 
 <B_menu>
 <div class="xml-menu">
-<BOUCLE_menu(DATA){source simplexml,#GET{url}|copie_locale{modif}}
+<BOUCLE_menu(DATA){source simplexml,(#GET{url}|comarquage_url_cache)}
   {datapath root/children}{datacache #GET{datacache}}>
   <INCLURE{fond=xml_templates/menu/#CLE, env}{data=#VALEUR} />
 </BOUCLE_menu>
