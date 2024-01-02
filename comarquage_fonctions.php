@@ -14,6 +14,81 @@ if (!defined("_ECRIRE_INC_VERSION")) {
 	return;
 }
 
+
+function comarquage_url_cache($url) {
+	include_spip('inc/distant');
+	if (function_exists('curl_init')) {
+		// version moderne
+		$fichier_copie_locale = _DIR_RACINE . nom_fichier_copie_locale($url, 'xml');
+		$fichier_cache = sous_repertoire(_DIR_CACHE, 'comarquage') . basename($fichier_copie_locale);
+		// recuperer les anciens cache de IMG/distant/ si dispo
+		if (file_exists($fichier_copie_locale) and !file_exists($fichier_cache)) {
+			@rename($fichier_copie_locale, $fichier_cache);
+		}
+
+		// le cache date de moins d'1h, on renvoie sans faire de hit sur le serveur
+		$fichier_cache_check = dirname($fichier_cache). '/.' . $fichier_cache . '.check';
+		if (file_exists($fichier_cache)) {
+			if (filemtime($fichier_cache) > $_SERVER['REQUEST_TIME'] - 3600) {
+				return $fichier_cache;
+			}
+			if (file_exists($fichier_cache_check) and filemtime($fichier_cache_check) > $_SERVER['REQUEST_TIME'] - 3600) {
+				return $fichier_cache;
+			}
+		}
+
+		// CURL le fichier car recuperer_url() tourne en boucle infinie dans certaines config depuis le 24/11/2023
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+
+		spip_log("comarquage_url_cache sur $url via curl", 'distant' . _LOG_DEBUG);
+
+		$user_agent = "SPIP/Comarquage";
+
+		$headers = [];
+		$headers[] = 'Connection: Close';
+		$headers[] = "User-Agent: $user_agent";
+
+		if (file_exists($fichier_cache)) {
+			$headers[] = "If-Modified-Since: " . gmdate('D, d M Y H:i:s \G\M\T', filemtime($fichier_cache));
+		}
+
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		//getting response from server
+		$response = curl_exec($ch);
+		$erreur = curl_errno($ch);
+		$erreur_msg = curl_error($ch);
+		if (!$erreur){
+			//closing the curl
+			curl_close($ch);
+			spip_log("comarquage_url_cache sur $url via curl OK : " . strlen($response).'car', 'distant');
+			if ($response) {
+				spip_log("comarquage_url_cache sur $url via curl OK : => $fichier_cache", 'distant');
+				file_put_contents($fichier_cache, $response);
+			}
+		}
+		else {
+			spip_log("comarquage_url_cache sur $url via curl HS : " . $response, 'distant' . _LOG_ERREUR);
+		}
+
+
+		// et dans tous les cas on touch le check, pour ne pas verifier de nouveau avant 1h
+		@touch($fichier_cache_check);
+
+		return $fichier_cache;
+
+	} else {
+		// compat old SPIP
+		return copie_locale($url, 'modif');
+	}
+}
+
 /**
  * Récupération des types de catégorie et leurs URL
  *
@@ -25,22 +100,22 @@ function filtre_type_categorie_dist($categorie) {
 	$parametres_xml = array();
 	switch ($categorie) {
 		case "particuliers":
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 
 		case "associations":
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/asso/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/asso/xml/";
 			$parametres_xml['CATEGORIE'] = "asso";
 			break;
 
 		case 'entreprises':
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/pro/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/pro/xml/";
 			$parametres_xml['CATEGORIE'] = "pro";
 			break;
 
 		default:
-			$parametres_xml['XMLURL'] = "http://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 	}

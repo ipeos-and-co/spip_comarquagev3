@@ -10,7 +10,7 @@ Variables:
 <div class="page-accueil">
   [(#REM) Menu principal]
   <INCLURE{fond=xml_templates/menu, env}{base_url=#ENV{url}} />
-<BOUCLE_accueil(DATA){source simplexml, #GET{url}|copie_locale{modif}}
+<BOUCLE_accueil(DATA){source simplexml, (#GET{url}|comarquage_url_cache)}
   {datapath root/children}{datacache #GET{datacache}}>
   <INCLURE{fond=xml_templates/balises/#CLE|replace{:,/}, env}{data=#VALEUR} />
 </BOUCLE_accueil>
