@@ -1,0 +1,12 @@
+[(#REM)
+Variables:
+  data : données de contenu
+-->]
+
+<BOUCLE_contenu(DATA){source tableau, #ENV{data}}>
+<div class="xml-contenu">
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
+  </BOUCLE_elements>
+</div>
+</BOUCLE_contenu>

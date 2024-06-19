@@ -100,22 +100,22 @@ function filtre_type_categorie_dist($categorie) {
 	$parametres_xml = array();
 	switch ($categorie) {
 		case "particuliers":
-			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.4/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 
 		case "associations":
-			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/asso/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.4/asso/xml/";
 			$parametres_xml['CATEGORIE'] = "asso";
 			break;
 
 		case 'entreprises':
-			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/pro/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.4/pro/xml/";
 			$parametres_xml['CATEGORIE'] = "pro";
 			break;
 
 		default:
-			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.3/part/xml/";
+			$parametres_xml['XMLURL'] = "https://lecomarquage.service-public.fr/vdd/3.4/part/xml/";
 			$parametres_xml['CATEGORIE'] = "part";
 			break;
 	}
@@ -433,4 +433,16 @@ function fluxXmlObjToArr($obj, $utiliser_namespace = false, $parentName = '') {
 	}
 
 	return $tableau;
+}
+
+/**
+ * Construit l'url de l'image de service-public.fr
+ * 
+ *
+ * @param string $uri
+ *
+ * @return string
+ **/
+function url_img($uri){
+	return "https://www.service-public.fr/webapp/images/vdd/extralarge/".$uri;
 }

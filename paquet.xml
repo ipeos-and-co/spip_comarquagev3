@@ -1,7 +1,7 @@
 <paquet
     prefix="comarquage"
     categorie="divers"
-    version="1.1.3"
+    version="1.1.4"
     etat="stable"
     compatibilite="[3.0.0;4.2.*]"
     logo="prive/themes/spip/images/picto-comarquage-service-public.png"
@@ -13,6 +13,9 @@
     <auteur>Laurent Vergerolle</auteur>
     <auteur>Olivier Watté</auteur>
     <auteur>Morgan Lejuez</auteur>
+    <auteur>Saintot Lesly</auteur>
     <credit lien="http://www.ipeos.com">IPEOS I-Solutions</credit>
     <licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPLv3</licence>
+    <necessite nom="oEmbed" compatibilite="[3.0.0;]" />
+
 </paquet>
