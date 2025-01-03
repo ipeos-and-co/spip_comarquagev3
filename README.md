@@ -43,7 +43,7 @@ Après avoir installé le plugin, le flux s'insère dans un article au moyen des
 
 - flux pour les _Particuliers_ : `<comarquage|categorie=particuliers>`
 - flux pour les _Professionnels_ : `<comarquage|categorie=entreprises>`
-- flux pour les _Associations_ : `<comarquage|categorie=associations>`
+- flux pour les _Associations_ : `<comarquage|categorie=associations>` (DÉPRÉCIÉ 3.4, FUSION AVEC FLUX _Particuliers_).
 
 ### Intégration
 
@@ -56,6 +56,8 @@ par défaut pendant **86400 secondes** (soit 24 h).
 Les XMLs de co-marquage sont copiés en local `|comarquage_url_cache`. Pour
 forcer le re-téléchargement des XMLs vider le répertoire `IMG/distant/xml`.
 
+Les vidéos sont récupérées grâce a au plugin oEembed v3.0.3 (https://contrib.spip.net/oEmbed-4407).
+
 ### Astuces
 
 Vous pouvez appeler une page précise en définissant l'attribut `xml` du modèle.
@@ -65,6 +67,18 @@ Par exemple pour afficher la page _Mariage_ de la catégorie _particuliers_, uti
 Pour appeler la page _Formalités administratives_ de la catégorie
 _Associations_, insérer ce code :
 `<comarquage|categorie=associations|xml=N31403>`.
+
+Certains fichiers XML peuvent être volumineux, entraînant des problèmes potentiels d'affichage. Pour garantir une expérience fluide, nous vous recommandons d'ajuster les paramètres de mémoire et de temps d'exécution.
+La configuration recommandé pour php.ini:
+```
+memory_limit=1024M
+max_execution_time=120
+```
+Vous pouvez ajouté cette configuration dans le fichier config/mes_options.php : 
+```
+ini_set('memory_limit','1024M');
+ini_set('max_execution_time','120');
+```
 
 ## TODO
 

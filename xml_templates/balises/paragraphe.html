@@ -2,11 +2,11 @@
 Variables:
   data : Contenu a parser
   no_html : Supprime la balise html si présente
+  TODO : Corrigé l'ordre d'affichage pour la balise miseenevidence. ex:"F20109"
 -->]
 
 <BOUCLE_paragraphe(DATA){source tableau, #ENV{data}}>
 [(#ENV{no_html}|non)<p class="xml-paragraphe mb-2">]#VALEUR{text}
-
   <BOUCLE_children(DATA){source tableau, #VALEUR{children}}>
     <BOUCLE_elements(DATA){source tableau, #VALEUR}>
     <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />

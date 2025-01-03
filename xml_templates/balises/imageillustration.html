@@ -1,0 +1,14 @@
+[(#REM)
+Variables:
+  data : données de ImageIllustration
+-->]
+
+<BOUCLE_imageillustration(DATA){source tableau, #ENV{data}}>
+<div class="xml-imageillustration">
+  [(#VALUE|table_valeur{children/titre/0/text}|print)]
+  <img src="[(#VALEUR|table_valeur{attributes/lienpublication}|url_img)]" alt="[(#VALEUR|table_valeur{children/titre/0/text})]" />
+  <BOUCLE_elements(DATA){source tableau, #VALEUR{children}}>
+  <INCLURE{fond=xml_templates/balises/#CLE, env}{data=#VALEUR} />
+  </BOUCLE_elements>
+</div>
+</BOUCLE_imageillustration>
